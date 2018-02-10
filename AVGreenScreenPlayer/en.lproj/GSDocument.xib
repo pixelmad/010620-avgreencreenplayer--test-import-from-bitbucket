@@ -66,6 +66,10 @@ IA
                         <rect key="frame" x="28" y="287" width="630" height="473"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-nH-6Ka" customClass="MyOpenGLView">
+                        <rect key="frame" x="680" y="414" width="580" height="316"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="100029" firstAttribute="leading" secondItem="100028" secondAttribute="trailing" constant="8" symbolic="YES" id="100039"/>
