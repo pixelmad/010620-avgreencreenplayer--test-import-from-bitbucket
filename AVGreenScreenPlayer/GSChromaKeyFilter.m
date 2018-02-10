@@ -56,11 +56,14 @@ static CIKernel *_GSChromaKeyFilterKernel;
 - (id)init
 {
 	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		NSString *code = [NSString stringWithContentsOfURL:[[NSBundle bundleForClass:[self class]] URLForResource:@"GSChromaKeyFilter" withExtension:@"cikernel"] usedEncoding:NULL error:NULL];
-		NSArray *kernels = [CIKernel kernelsWithString:code];
-		_GSChromaKeyFilterKernel = kernels[0];
-	});
+	dispatch_once
+		(&onceToken,
+			^{
+			NSString *code = [NSString stringWithContentsOfURL:[[NSBundle bundleForClass:[self class]] URLForResource:@"GSChromaKeyFilter" withExtension:@"cikernel"] usedEncoding:NULL error:NULL];
+			NSArray *kernels = [CIKernel kernelsWithString:code];
+			_GSChromaKeyFilterKernel = kernels[0];
+			}
+		);
 	
 	self = [super init];
 	

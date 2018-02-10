@@ -196,15 +196,18 @@ NSString* const GSMouseUpNotification = @"GSMouseUpNotification";
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if (context == GSPlayerItemStatusContext) {
+	if (context == GSPlayerItemStatusContext)
+		{
 		AVPlayerStatus status = [change[NSKeyValueChangeNewKey] integerValue];
-		if (status == AVPlayerItemStatusReadyToPlay) {
+		if (status == AVPlayerItemStatusReadyToPlay)
+			{
 			self.playerView.videoLayer.controlTimebase = _player.currentItem.timebase;
+			}
 		}
-	}
-	else {
+	else
+		{
 		[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-	}
+		}
 }
 
 #pragma mark -
@@ -261,7 +264,8 @@ NSString* const GSMouseUpNotification = @"GSMouseUpNotification";
     // __weak is used to ensure that a retain cycle between the document, player and notification block is not formed.
 	__weak GSDocument* weakSelf = self;
 	_observer = [_player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1, 10) queue:dispatch_get_main_queue() usingBlock:
-						  ^(CMTime time) {
+						  ^(CMTime time)
+						  {
 							  [weakSelf syncScrubber];
 						  }];
 }

@@ -192,28 +192,32 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 		err = CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &_videoInfo);
 	}
 
-	if (err) {
+	if (err)
+		{
 		NSLog(@"Error at CMVideoFormatDescriptionCreateForImageBuffer %d", err);
-	}
+		}
 	
 	// decodeTimeStamp is set to kCMTimeInvalid since we already receive decoded frames
-	CMSampleTimingInfo sampleTimingInfo = {
+	CMSampleTimingInfo sampleTimingInfo =
+		{
 		.duration = kCMTimeInvalid,
 		.presentationTimeStamp = outputTime,
 		.decodeTimeStamp = kCMTimeInvalid
-	};
+		};
 
 	// Wrap the pixel buffer in a sample buffer
 	err = CMSampleBufferCreateForImageBuffer(kCFAllocatorDefault, pixelBuffer, true, NULL, NULL, _videoInfo, &sampleTimingInfo, &sampleBuffer);
 	
-	if (err) {
+	if (err)
+		{
 		NSLog(@"Error at CMSampleBufferCreateForImageBuffer %d", err);
-	}
+		}
 
 	// Enqueue sample buffers which will be displayed at their above set presentationTimeStamp
-	if (self.videoLayer.readyForMoreMediaData) {
+	if (self.videoLayer.readyForMoreMediaData)
+		{
 		[self.videoLayer enqueueSampleBuffer:sampleBuffer];
-	}
+		}
 	
 	CFRelease(sampleBuffer);
 }
