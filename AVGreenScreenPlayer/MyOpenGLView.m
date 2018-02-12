@@ -260,9 +260,66 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
      glClearColor( red, 0, 0, .5);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glEnable(GL_DEPTH_TEST);
+//	glEnable(GL_CULL_FACE);
+//	glEnable(GL_LIGHTING);
+//	glEnable(GL_LIGHT0);
+	glEnable( GL_TEXTURE_RECTANGLE_EXT );
+	float	width = 100, height = 100;
+
+	glViewport(0, 0, width, height);
+	
+	glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(30, width / height, 1.0, 1000.0);
+	glMatrixMode( GL_MODELVIEW );
+
 	red += 0.01;
 	if ( red > 1.0 )
 		red = 0.;
+
+	    GLUquadric *quadric = NULL;
+		glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+			glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
+			float	textureWidth = 1;//[texture textureWidth ];
+			float	textureHeight = 1;//[texture textureHeight ];
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+
+
+			// Set up our single directional light (the Sun!)
+	//		lightDirection[0] = cos( dtor( sunAngle ) );
+	//		lightDirection[2] = sin( dtor( sunAngle ) );
+	//		glLightfv(GL_LIGHT0, GL_POSITION, lightDirection);
+			
+			glPushMatrix();
+			
+			// Back the camera off a bit
+			glTranslatef(0.0, 0.0, -1.5);
+			
+			// Draw the Earth!
+			quadric = gluNewQuadric();
+		//	if (wireframe)
+				gluQuadricDrawStyle(quadric, GLU_LINE);
+			
+			gluQuadricTexture(quadric, GL_TRUE);
+		//	glMaterialfv(GL_FRONT, GL_AMBIENT, materialAmbient);
+		//	glMaterialfv(GL_FRONT, GL_DIFFUSE, materialDiffuse);
+		//	glRotatef(rollAngle, 1.0, 0.0, 0.0);
+			glRotatef(-23.45, 0.0, 0.0, 1.0); // Earth's axial tilt is 23.45 degrees from the plane of the ecliptic
+		//	glRotatef(animationPhase * 360.0, 0.0, 1.0, 0.0);
+			glRotatef(-90.0, 1.0, 0.0, 0.0);
+			gluSphere(quadric, 0, 48, 24);
+			gluDeleteQuadric(quadric);
+			quadric = NULL;
+			
+			glPopMatrix();
+			
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+
 	[[self openGLContext] flushBuffer];
 	
 	CGLUnlockContext([[self openGLContext] CGLContextObj]);
