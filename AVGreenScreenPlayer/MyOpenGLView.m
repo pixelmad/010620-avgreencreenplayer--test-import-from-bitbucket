@@ -122,22 +122,26 @@
 // This is the renderer output callback function
 static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp* now, const CVTimeStamp* outputTime, CVOptionFlags flagsIn, CVOptionFlags* flagsOut, void* displayLinkContext)
 {
- //   CVReturn result = [(MyOpenGLView*)displayLinkContext getFrameForTime:outputTime];
+    CVReturn result = [(__bridge MyOpenGLView*)displayLinkContext getFrameForTime:outputTime];
     return 0;
 }
 
 - (void) setupDisplayLink
 {
 	// Create a display link capable of being used with all active displays
-	CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);
+	CVReturn	err = CVDisplayLinkCreateWithActiveCGDisplays( &displayLink );
 	
 	// Set the renderer output callback function
-//	CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, self);
+	err = CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, (__bridge void * _Nullable)(self));
 	
 	// Set the display link for the current renderer
-	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
-	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
-	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
+	CVDisplayLinkStart(displayLink);
+
+	// not needed...
+	
+//	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
+//	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
+//	err = CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext( displayLink, cglContext, cglPixelFormat);
 }
 
 - (id) initWithFrame:(NSRect)frameRect shareContext:(NSOpenGLContext*)context
@@ -257,6 +261,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	red += 0.01;
+	if ( red > 1.0 )
+		red = 0.;
 	[[self openGLContext] flushBuffer];
 	
 	CGLUnlockContext([[self openGLContext] CGLContextObj]);

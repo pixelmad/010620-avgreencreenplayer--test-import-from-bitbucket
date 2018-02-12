@@ -233,7 +233,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 	// Compute itemTime for the next vsync
 	CMTime outputItemTime = [playerItemVideoOutput itemTimeForCVTimeStamp:*inOutputTime];
 	if ([playerItemVideoOutput hasNewPixelBufferForItemTime:outputItemTime])
-	{
+		{
 		self->_lastHostTime = inOutputTime->hostTime;
 		
 		// Copy the pixel buffer to be displayed next and add it to AVSampleBufferDisplayLayer for display
@@ -242,19 +242,19 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 		[self displayPixelBuffer:pixBuff atTime:outputItemTime];
 		
 		CVBufferRelease(pixBuff);
-	}
+		}
 	else
-	{
+		{
 		CMTime elapsedTime = CMClockMakeHostTimeFromSystemUnits(inNow->hostTime - self->_lastHostTime);
 		if (CMTimeGetSeconds(elapsedTime) > FREEWHEELING_PERIOD_IN_SECONDS)
-		{
+			{
 			// No new images for a while.  Shut down the display link to conserve power, but request a wakeup call if new images are coming.
 			
 			CVDisplayLinkStop(displayLink);
 			
 			[playerItemVideoOutput requestNotificationOfMediaDataChangeWithAdvanceInterval:ADVANCE_INTERVAL_IN_SECONDS];
+			}
 		}
-	}
 	
 	return kCVReturnSuccess;
 }
