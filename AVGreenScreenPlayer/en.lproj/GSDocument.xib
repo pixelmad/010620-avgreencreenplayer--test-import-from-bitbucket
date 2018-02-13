@@ -62,12 +62,12 @@ IA
                             <binding destination="-2" name="value" keyPath="self.playerView.chromaKeyColor" id="100178"/>
                         </connections>
                     </colorWell>
-                    <customView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100027" customClass="GSPlayerView">
-                        <rect key="frame" x="244" y="24" width="630" height="473"/>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-nH-6Ka" customClass="MyOpenGLView">
+                        <rect key="frame" x="0.0" y="89" width="1194" height="691"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-nH-6Ka" customClass="MyOpenGLView">
-                        <rect key="frame" x="0.0" y="464" width="580" height="316"/>
+                    <customView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100027" customClass="GSPlayerView">
+                        <rect key="frame" x="990" y="58" width="255" height="156"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
