@@ -49,6 +49,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/CVDisplayLink.h>
+#import "Texture.h"
+
 //#import <QuickTime/QuickTime.h>
 //#import <QTKit/QTKit.h>
 //#import "movieLayers.h"
@@ -64,7 +66,9 @@
 
 	GLenum				cvTextureTarget;
 	GLint 				cvTextureName;
-	
+	Texture 			*texture1;
+	GLint 				texture1Name;
+
 //	QTVisualContextRef	textureContext;
 //	CVOpenGLTextureRef  currentFrame;
 

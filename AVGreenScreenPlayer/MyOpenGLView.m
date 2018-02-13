@@ -51,6 +51,7 @@
 #import <GLUT/glut.h>
 
 #import "MyOpenGLView.h"
+#import "Texture.h"
 //#import "MainController.h"
 //#import "Scene.h"
 
@@ -74,6 +75,15 @@
 // initialize
 -(void)awakeFromNib
 {
+		if ( !texture1Name )
+			{
+			NSString *path = [[NSBundle mainBundle] pathForResource:@"glgui_texture_packer_070616" ofType:@"png"];
+		//	NSString *path = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
+			
+			
+			texture1 = [ [Texture alloc] initWithPath:path];
+			texture1Name = [texture1 textureName];
+			}
 }
 
 - (CVReturn) getFrameForTime:(const CVTimeStamp*)outputTime
