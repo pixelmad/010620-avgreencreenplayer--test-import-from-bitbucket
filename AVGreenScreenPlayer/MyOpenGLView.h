@@ -57,7 +57,7 @@
 
 @interface MyOpenGLView : NSView
 	{
-	
+	NSRect		glFrameRect;
 //	movieLayers			*theMovieLayers;
 //	QTMovie     		*movie;
 //    NSSize 				movieSize;

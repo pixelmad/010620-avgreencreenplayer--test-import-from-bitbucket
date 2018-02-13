@@ -48,6 +48,7 @@
 */
 
 #import <OpenGL/glu.h>
+#import <GLUT/glut.h>
 
 #import "MyOpenGLView.h"
 //#import "MainController.h"
@@ -163,7 +164,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	
 	// NSOpenGLView does not handle context sharing, so we draw to a custom NSView instead
 	openGLContext = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:context];
-	
+	glFrameRect = frameRect;
 	if (self = [super initWithFrame:frameRect])
 		{
 		[[self openGLContext] makeCurrentContext];
@@ -256,7 +257,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 	// Delegate to the scene object for rendering
  //   [[controller scene] render];
- 	static	float red = 0.5;
+ 	static	float red = 0.2;
      glClearColor( red, 0, 0, .5);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -264,29 +265,50 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //	glEnable(GL_CULL_FACE);
 //	glEnable(GL_LIGHTING);
 //	glEnable(GL_LIGHT0);
-	glEnable( GL_TEXTURE_RECTANGLE_EXT );
-	float	width = 100, height = 100;
+	glDisable( GL_TEXTURE_RECTANGLE_EXT );
+	float	width = glFrameRect.size.width, height = glFrameRect.size.height;
+     glColor4f( 1, 1, 1, .5);
 
-	glViewport(0, 0, width, height);
+//	glViewport( glFrameRect.origin.x, glFrameRect.origin.y, width, height);
 	
 	glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(30, width / height, 1.0, 1000.0);
+	gluOrtho2D( -2, 2, -2, 2 );
+//    gluPerspective(30, width / height, 1.0, 1000.0);
 	glMatrixMode( GL_MODELVIEW );
 
-	red += 0.01;
-	if ( red > 1.0 )
-		red = 0.;
+#if 0
+               	glBegin(GL_QUADS);
+                    glTexCoord2f( 0, 0 );
+						glVertex2f(-1, -1);
+						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+                    glTexCoord2f( 0, height );
+						glVertex2f(-1,  1);
+  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+                    glTexCoord2f( width, height );
+						glVertex2f( 1,  1);
+						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+                    glTexCoord2f( width, 0 );
+						glVertex2f( 1, -1);
+						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+                glEnd();
+#endif
+#if 1
+//	red += 0.01;
+//	if ( red > 1.0 )
+//		red = 0.;
 
+			static	float	 animationPhase = 0;
+			animationPhase += .1;
 	    GLUquadric *quadric = NULL;
-		glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
-			glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+	//		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 			float	textureWidth = 1;//[texture textureWidth ];
 			float	textureHeight = 1;//[texture textureHeight ];
-			glMatrixMode( GL_TEXTURE );
-			glLoadIdentity();
-			glScalef( textureWidth, textureHeight, 1.0 );
+	//		glMatrixMode( GL_TEXTURE );
+	//		glLoadIdentity();
+	//		glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
 
 
@@ -296,21 +318,39 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	//		glLightfv(GL_LIGHT0, GL_POSITION, lightDirection);
 			
 			glPushMatrix();
-			
+	
+	#if 1
 			// Back the camera off a bit
-			glTranslatef(0.0, 0.0, -1.5);
-			
+ 			glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+              	glBegin(GL_QUADS);
+                    glTexCoord2f( 0, 0 );
+						glVertex2f(-1, -1);
+						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+                    glTexCoord2f( 0, height );
+						glVertex2f(-1,  1);
+  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+                    glTexCoord2f( width, height );
+						glVertex2f( 1,  1);
+						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+                    glTexCoord2f( width, 0 );
+						glVertex2f( 1, -1);
+						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+                glEnd();
+	#endif
+	 glutSolidTeapot( 0.5 );
+
+	#if 0
 			// Draw the Earth!
+			glTranslatef(0.0, 0.0, -1.5);
 			quadric = gluNewQuadric();
 		//	if (wireframe)
 				gluQuadricDrawStyle(quadric, GLU_LINE);
-			
-			gluQuadricTexture(quadric, GL_TRUE);
+		//	gluQuadricTexture(quadric, GL_TRUE);
 		//	glMaterialfv(GL_FRONT, GL_AMBIENT, materialAmbient);
 		//	glMaterialfv(GL_FRONT, GL_DIFFUSE, materialDiffuse);
 		//	glRotatef(rollAngle, 1.0, 0.0, 0.0);
 			glRotatef(-23.45, 0.0, 0.0, 1.0); // Earth's axial tilt is 23.45 degrees from the plane of the ecliptic
-		//	glRotatef(animationPhase * 360.0, 0.0, 1.0, 0.0);
+			glRotatef(animationPhase * 360.0, 0.0, 1.0, 0.0);
 			glRotatef(-90.0, 1.0, 0.0, 0.0);
 			gluSphere(quadric, 0, 48, 24);
 			gluDeleteQuadric(quadric);
@@ -319,7 +359,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glPopMatrix();
 			
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
-
+	#endif
+#endif
 	[[self openGLContext] flushBuffer];
 	
 	CGLUnlockContext([[self openGLContext] CGLContextObj]);
@@ -345,14 +386,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 
 - (void) startAnimation
 {
-	if (displayLink && !CVDisplayLinkIsRunning(displayLink))
-		CVDisplayLinkStart(displayLink);
+//	if (displayLink && !CVDisplayLinkIsRunning(displayLink))
+//		CVDisplayLinkStart(displayLink);
 }
 
 - (void) stopAnimation
 {
-	if (displayLink && CVDisplayLinkIsRunning(displayLink))
-		CVDisplayLinkStop(displayLink);
+//	if (displayLink && CVDisplayLinkIsRunning(displayLink))
+//		CVDisplayLinkStop(displayLink);
 }
 
 - (void) dealloc
