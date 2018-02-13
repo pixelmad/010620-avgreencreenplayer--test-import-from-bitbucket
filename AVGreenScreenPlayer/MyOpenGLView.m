@@ -78,11 +78,15 @@
 		if ( !texture1Name )
 			{
 			NSString *path = [[NSBundle mainBundle] pathForResource:@"glgui_texture_packer_070616" ofType:@"png"];
-		//	NSString *path = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
 			
 			
 			texture1 = [ [Texture alloc] initWithPath:path];
 			texture1Name = [texture1 textureName];
+
+			NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
+			texture2 = [ [Texture alloc] initWithPath:path2 ];
+			texture2Name = [texture2 textureName ];
+
 			}
 }
 
@@ -323,9 +327,9 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glPushMatrix();
 	
 	#if 1
-			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
-			float	textureWidth = [texture1 textureWidth ];
-			float	textureHeight = [texture1 textureHeight ];
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture2Name );
+			float	textureWidth = [texture2 textureWidth ];
+			float	textureHeight = [texture2 textureHeight ];
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
@@ -336,19 +340,29 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
                     glTexCoord2f( 0, 0 );
 						glVertex2f(-1, -1);
 						glColor4f( 1.0, 0.0, 0.0, 1.0 );
-                    glTexCoord2f( 0, height );
+                    glTexCoord2f( 0, 1 );
 						glVertex2f(-1,  1);
   						glColor4f( 0.0, 1.0, 0.0, 1.0 );
-                    glTexCoord2f( width, height );
+                    glTexCoord2f( 1, 1 );
 						glVertex2f( 1,  1);
 						glColor4f( 0.0, 0.0, 1.0, 1.0 );
-                    glTexCoord2f( width, 0 );
+                    glTexCoord2f( 1, 0 );
 						glVertex2f( 1, -1);
 						glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 	#endif
-	 glutSolidTeapot( 0.5 );
+			{
+	glColor4f( 1.0, 1.0, 1.0, 1.0 );
+	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
+			float	textureWidth = [texture1 textureWidth ];
+			float	textureHeight = [texture1 textureHeight ];
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+	 		glutSolidTeapot( 0.5 );
+			}
 
 	#if 0
 			// Draw the Earth!
@@ -367,10 +381,10 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			gluDeleteQuadric(quadric);
 			quadric = NULL;
 			
-			glPopMatrix();
-			
-			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 	#endif
+			glPopMatrix();
+	
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 #endif
 	[[self openGLContext] flushBuffer];
 	

@@ -68,6 +68,8 @@
 	GLint 				cvTextureName;
 	Texture 			*texture1;
 	GLint 				texture1Name;
+	Texture 			*texture2;
+	GLint 				texture2Name;
 
 //	QTVisualContextRef	textureContext;
 //	CVOpenGLTextureRef  currentFrame;
