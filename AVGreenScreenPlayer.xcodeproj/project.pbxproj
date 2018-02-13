@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7113901A20331044002B41CF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7113901920331044002B41CF /* GLUT.framework */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7113901920331044002B41CF /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../System/Library/Frameworks/GLUT.framework; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -60,6 +62,7 @@
 			files = (
 				A65E173915517FC20058E95B /* CoreMedia.framework in Frameworks */,
 				A65E173715517FB90058E95B /* QuartzCore.framework in Frameworks */,
+				7113901A20331044002B41CF /* GLUT.framework in Frameworks */,
 				A65E173515517FAE0058E95B /* AVFoundation.framework in Frameworks */,
 				7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */,
 				A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */,
@@ -89,6 +92,7 @@
 		A65E170F15517EEF0058E95B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7113901920331044002B41CF /* GLUT.framework */,
 				7183593D202F93ED009A090B /* OpenGL.framework */,
 				A65E173415517FAE0058E95B /* AVFoundation.framework */,
 				A65E171015517EEF0058E95B /* Cocoa.framework */,
