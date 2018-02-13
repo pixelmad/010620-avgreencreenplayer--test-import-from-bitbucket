@@ -106,8 +106,8 @@
 	image = CGImageSourceCreateImageAtIndex(src, 0, NULL);
 	CFRelease(src);
 	
-	_textureWidth = CGImageGetWidth(image);
-	_textureHeight = CGImageGetHeight(image);
+	_textureWidth = CGImageGetWidth( image );
+	_textureHeight = CGImageGetHeight( image );
 
 	data = (GLubyte*) calloc( _textureWidth * _textureHeight * 4, sizeof(GLubyte));
 	
@@ -170,7 +170,7 @@
 {
 	glDeleteTextures(1, &texId);
 	glDeleteBuffers(1, &pboId);
-	[super dealloc];
+//	[super dealloc];
 }
 
 @end

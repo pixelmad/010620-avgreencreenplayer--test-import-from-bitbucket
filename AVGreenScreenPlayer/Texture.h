@@ -52,8 +52,8 @@
 	
 	GLuint texId;
 	GLuint pboId;
-	size_t	_textureWidth;
-	size_t	_textureHeight;
+	GLsizei	_textureWidth;
+	GLsizei	_textureHeight;
 	
 	GLubyte	*data;
 }
