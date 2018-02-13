@@ -254,7 +254,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //	GLfloat topLeft[2], topRight[2], bottomRight[2], bottomLeft[2];
 //	CVOpenGLTextureGetCleanTexCoords(currentFrame, bottomLeft, bottomRight, topRight, topLeft);
 #endif
-
+ 
 	// Delegate to the scene object for rendering
  //   [[controller scene] render];
  	static	float red = 0.2;
