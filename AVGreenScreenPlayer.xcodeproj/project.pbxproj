@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7113901A20331044002B41CF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7113901920331044002B41CF /* GLUT.framework */; };
 		7113901D203373AE002B41CF /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 7113901C203373AD002B41CF /* Texture.m */; };
+		7113901F20337A6D002B41CF /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7113901E20337A6D002B41CF /* Earth.jpg */; };
+		7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */ = {isa = PBXBuildFile; fileRef = 7113902020337A75002B41CF /* glgui_texture_packer_070616.png */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -30,6 +32,8 @@
 		7113901920331044002B41CF /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../System/Library/Frameworks/GLUT.framework; sourceTree = "<group>"; };
 		7113901B203373AD002B41CF /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
 		7113901C203373AD002B41CF /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
+		7113901E20337A6D002B41CF /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
+		7113902020337A75002B41CF /* glgui_texture_packer_070616.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glgui_texture_packer_070616.png; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -138,6 +142,8 @@
 		A65E171715517EEF0058E95B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7113901E20337A6D002B41CF /* Earth.jpg */,
+				7113902020337A75002B41CF /* glgui_texture_packer_070616.png */,
 				A65E171815517EEF0058E95B /* AVGreenScreenPlayer-Info.plist */,
 				A65E171915517EEF0058E95B /* InfoPlist.strings */,
 				A65E171C15517EEF0058E95B /* main.m */,
@@ -226,9 +232,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */,
 				A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */,
 				A65E172715517EEF0058E95B /* GSDocument.xib in Resources */,
 				A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */,
+				7113901F20337A6D002B41CF /* Earth.jpg in Resources */,
 				A65E1741155180270058E95B /* GSChromaKeyFilter.cikernel in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
