@@ -118,21 +118,25 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 
 - (void)viewWillMoveToSuperview:(NSView *)newSuperview
 {
-	if (!newSuperview) {
+	if (!newSuperview)
+		{
 
-        if (_videoInfo) {
+        if (_videoInfo)
+        	{
             CFRelease(_videoInfo);
-        }
+        	}
 		
 		if (_displayLink)
-		{
+			{
 			CVDisplayLinkStop(_displayLink);
 			CVDisplayLinkRelease(_displayLink);
-		}
+			}
 
-		dispatch_sync(_queue, ^{
-			[_playerItemVideoOutput setDelegate:nil queue:NULL];
-		});
+		dispatch_sync(_queue,
+				^{
+				[_playerItemVideoOutput setDelegate:nil queue:NULL];
+				}
+				);
 
 	}
 }
@@ -154,7 +158,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 - (void)setPlayerItem:(AVPlayerItem *)playerItem
 {
 	if (_playerItem != playerItem)
-	{
+		{
 		if (_playerItem)
 			[_playerItem removeOutput:_playerItemVideoOutput];
 		
@@ -162,7 +166,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 		
 		if (_playerItem)
 			[_playerItem addOutput:_playerItemVideoOutput];
-	}
+		}
 }
 
 - (NSColor *)chromaKeyColor
@@ -184,13 +188,15 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 	CMSampleBufferRef sampleBuffer = NULL;
 	OSStatus err = noErr;
 
-	if (!_videoInfo || !CMVideoFormatDescriptionMatchesImageBuffer(_videoInfo, pixelBuffer)) {
-        if (_videoInfo) {
+	if (!_videoInfo || !CMVideoFormatDescriptionMatchesImageBuffer(_videoInfo, pixelBuffer))
+		{
+        if (_videoInfo)
+        	{
             CFRelease(_videoInfo);
             _videoInfo = nil;
-        }
+        	}
 		err = CMVideoFormatDescriptionCreateForImageBuffer(NULL, pixelBuffer, &_videoInfo);
-	}
+		}
 
 	if (err)
 		{

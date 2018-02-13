@@ -186,10 +186,10 @@ NSString* const GSMouseUpNotification = @"GSMouseUpNotification";
 {
 	AVPlayerItem *playerItem = [AVPlayerItem playerItemWithURL:url];
 	if (playerItem)
-	{
+		{
 		[_player replaceCurrentItemWithPlayerItem:playerItem];
 		return YES;
-	}
+		}
 	
 	return NO;
 }
