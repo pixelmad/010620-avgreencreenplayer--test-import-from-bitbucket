@@ -275,7 +275,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 //	glEnable(GL_CULL_FACE);
 //	glEnable(GL_LIGHTING);
 //	glEnable(GL_LIGHT0);
-	glDisable( GL_TEXTURE_RECTANGLE_EXT );
+	glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	float	width = glFrameRect.size.width, height = glFrameRect.size.height;
      glColor4f( 1, 1, 1, .5);
 
@@ -311,15 +311,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			static	float	 animationPhase = 0;
 			animationPhase += .1;
 	    GLUquadric *quadric = NULL;
-	//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 	//		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-			float	textureWidth = 1;//[texture textureWidth ];
-			float	textureHeight = 1;//[texture textureHeight ];
-	//		glMatrixMode( GL_TEXTURE );
-	//		glLoadIdentity();
-	//		glScalef( textureWidth, textureHeight, 1.0 );
-			glMatrixMode( GL_MODELVIEW );
 
 
 			// Set up our single directional light (the Sun!)
@@ -330,7 +323,14 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glPushMatrix();
 	
 	#if 1
-			// Back the camera off a bit
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
+			float	textureWidth = [texture1 textureWidth ];
+			float	textureHeight = [texture1 textureHeight ];
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+	
  			glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
               	glBegin(GL_QUADS);
                     glTexCoord2f( 0, 0 );
@@ -346,6 +346,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 						glVertex2f( 1, -1);
 						glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 	#endif
 	 glutSolidTeapot( 0.5 );
 
