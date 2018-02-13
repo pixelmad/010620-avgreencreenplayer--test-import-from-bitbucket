@@ -75,19 +75,6 @@
 // initialize
 -(void)awakeFromNib
 {
-		if ( !texture1Name )
-			{
-			NSString *path = [[NSBundle mainBundle] pathForResource:@"glgui_texture_packer_070616" ofType:@"png"];
-			
-			
-			texture1 = [ [Texture alloc] initWithPath:path];
-			texture1Name = [texture1 textureName];
-
-			NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
-			texture2 = [ [Texture alloc] initWithPath:path2 ];
-			texture2Name = [texture2 textureName ];
-
-			}
 }
 
 - (CVReturn) getFrameForTime:(const CVTimeStamp*)outputTime
@@ -256,6 +243,20 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	// Make sure we draw to the right context
 	[[self openGLContext] makeCurrentContext];
 
+		if ( !texture1Name )
+			{
+			NSString *path = [[NSBundle mainBundle] pathForResource:@"glgui_texture_packer_070616" ofType:@"png"];
+			
+			
+			texture1 = [ [Texture alloc] initWithPath:path];
+			texture1Name = [texture1 textureName];
+
+			NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
+			texture2 = [ [Texture alloc] initWithPath:path2 ];
+			texture2Name = [texture2 textureName ];
+
+			}
+
 #if 0
 	cvTextureTarget = CVOpenGLTextureGetTarget(currentFrame);	// get the texture target (for example, GL_TEXTURE_2D) of the texture
 	cvTextureName = CVOpenGLTextureGetName(currentFrame);		// get the texture target name of the texture
@@ -288,7 +289,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 	gluOrtho2D( -2, 2, -2, 2 );
-//    gluPerspective(30, width / height, 1.0, 1000.0);
+//    gluPerspective(30, width / height, 0.0, 1000.0);
 	glMatrixMode( GL_MODELVIEW );
 
 #if 0
@@ -327,6 +328,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glPushMatrix();
 	
 	#if 1
+			{
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture2Name );
 			float	textureWidth = [texture2 textureWidth ];
 			float	textureHeight = [texture2 textureHeight ];
@@ -350,18 +352,52 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 						glVertex2f( 1, -1);
 						glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
-			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
-	#endif
+		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+			}
 			{
-	glColor4f( 1.0, 1.0, 1.0, 1.0 );
-	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
+			glPushMatrix();
+			glScalef( 2, 2, 1.0 );
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
 			float	textureWidth = [texture1 textureWidth ];
 			float	textureHeight = [texture1 textureHeight ];
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
+	
+ 			glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+              	glBegin(GL_QUADS);
+                    glTexCoord2f( 0, 0 );
+						glVertex2f(-1, -1);
+						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+                    glTexCoord2f( 0, 1 );
+						glVertex2f(-1,  1);
+  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+                    glTexCoord2f( 1, 1 );
+						glVertex2f( 1,  1);
+						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+                    glTexCoord2f( 1, 0 );
+						glVertex2f( 1, -1);
+						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+                glEnd();
+			glPopMatrix();
+		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+			}
+	#endif
+			{
+			glPushMatrix();
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
+			float	textureWidth = [texture1 textureWidth ];
+			float	textureHeight = [texture1 textureHeight ];
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+ 			glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
 	 		glutSolidTeapot( 0.5 );
+			glutWireTeapot( 0.5 );
+			glPopMatrix();
 			}
 
 	#if 0
