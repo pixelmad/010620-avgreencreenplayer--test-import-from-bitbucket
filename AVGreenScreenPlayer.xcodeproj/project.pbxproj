@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7113901A20331044002B41CF /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7113901920331044002B41CF /* GLUT.framework */; };
+		7113901D203373AE002B41CF /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 7113901C203373AD002B41CF /* Texture.m */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -27,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		7113901920331044002B41CF /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../System/Library/Frameworks/GLUT.framework; sourceTree = "<group>"; };
+		7113901B203373AD002B41CF /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		7113901C203373AD002B41CF /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 			children = (
 				7183593A202F924D009A090B /* MyOpenGLView.h */,
 				7183593B202F924D009A090B /* MyOpenGLView.m */,
+				7113901B203373AD002B41CF /* Texture.h */,
+				7113901C203373AD002B41CF /* Texture.m */,
 				A65E1743155184A00058E95B /* GSApplicationDelegate.h */,
 				A65E1744155184A00058E95B /* GSApplicationDelegate.m */,
 				A65E172215517EEF0058E95B /* GSDocument.h */,
@@ -241,6 +246,7 @@
 				A65E17421551802E0058E95B /* GSPlayerView.m in Sources */,
 				A65E1745155184A00058E95B /* GSApplicationDelegate.m in Sources */,
 				7183593C202F924D009A090B /* MyOpenGLView.m in Sources */,
+				7113901D203373AE002B41CF /* Texture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
