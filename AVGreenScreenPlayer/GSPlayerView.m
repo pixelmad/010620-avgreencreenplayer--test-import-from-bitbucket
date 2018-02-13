@@ -81,9 +81,16 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
         
 		_queue = dispatch_queue_create(NULL, NULL);
 		
-		_playerItemVideoOutput = [[AVPlayerItemVideoOutput alloc] initWithPixelBufferAttributes:@{(id)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32ARGB)}];
-		if (_playerItemVideoOutput)
-		{
+		_playerItemVideoOutput = [
+				[ AVPlayerItemVideoOutput alloc]
+				initWithPixelBufferAttributes:
+						@{
+							(id) kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32ARGB)
+							
+							}
+						];
+		if ( _playerItemVideoOutput )
+			{
 			// Create a CVDisplayLink to receive a callback at every vsync
 			CVDisplayLinkCreateWithActiveCGDisplays(&_displayLink);
 			CVDisplayLinkSetOutputCallback(_displayLink, displayLinkCallback, (__bridge void *)self);
@@ -92,7 +99,7 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 			// Request notification for media change in advance to start up displayLink or any setup necessary
 			[_playerItemVideoOutput setDelegate:self queue:_queue];
 			[_playerItemVideoOutput requestNotificationOfMediaDataChangeWithAdvanceInterval:ADVANCE_INTERVAL_IN_SECONDS];
-		}
+			}
 		
 		self.videoLayer = [[AVSampleBufferDisplayLayer alloc] init];
 		self.videoLayer.bounds = self.bounds;
