@@ -40,7 +40,7 @@
  AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
- 
+
  Copyright (C) 2014 Apple Inc. All Rights Reserved.
  
  */
@@ -59,8 +59,9 @@
     NSArray *docs = [[NSDocumentController sharedDocumentController] documents];
     if ( [docs count]==0 && [[NSApplication sharedApplication] keyWindow ] == nil)
     	{
+		[ [NSDocumentController sharedDocumentController] newDocument:0 ];
         // If no docs already open, put up open file dialog at program launch
-        [ [NSDocumentController sharedDocumentController] openDocument:self ];
+ //       [ [NSDocumentController sharedDocumentController] openDocument:self ];
     	}
     
 }
