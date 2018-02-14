@@ -263,9 +263,9 @@ static CVReturn displayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeSt
 			{
 			// No new images for a while.  Shut down the display link to conserve power, but request a wakeup call if new images are coming.
 			
-			CVDisplayLinkStop(displayLink);
+	//		CVDisplayLinkStop(displayLink);
 			
-			[playerItemVideoOutput requestNotificationOfMediaDataChangeWithAdvanceInterval:ADVANCE_INTERVAL_IN_SECONDS];
+	//		[playerItemVideoOutput requestNotificationOfMediaDataChangeWithAdvanceInterval:ADVANCE_INTERVAL_IN_SECONDS];
 			}
 		}
 	
