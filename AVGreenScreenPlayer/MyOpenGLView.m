@@ -330,8 +330,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 	#if 1
 			{
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture2Name );
-			float	textureWidth = [texture2 textureWidth ];
-			float	textureHeight = [texture2 textureHeight ];
+			float	textureWidth = texture2.textureWidth;
+			float	textureHeight = texture2.textureHeight;
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
@@ -388,13 +388,13 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			glPushMatrix();
 			glColor4f( 1.0, 1.0, 1.0, 1.0 );
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
-			float	textureWidth = [texture1 textureWidth ];
-			float	textureHeight = [texture1 textureHeight ];
+			float	textureWidth = texture1.textureWidth;
+			float	textureHeight = texture1.textureHeight;
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
- 			glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+ 			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
 	 		glutSolidTeapot( 0.5 );
 			glutWireTeapot( 0.5 );
 			glPopMatrix();
