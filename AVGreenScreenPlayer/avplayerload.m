@@ -17,11 +17,11 @@ const	NSString		*kStatusKey = @"hello movies";
 
 @implementation MyAVplayerload
 
-- (void) load
+- (id) load
 {
      // Create a player...
 	
-     NSURL* url = [ NSURL fileURLWithPath:path ];
+     NSURL* url = [ NSURL fileURLWithPath:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
      player = [AVPlayer playerWithURL:url];
      [ player setVolume:0.0];
 	
@@ -80,6 +80,7 @@ const	NSString		*kStatusKey = @"hello movies";
      [ player addObserver:self forKeyPath:kStatusKey options:NSKeyValueObservingOptionInitial context:&kStatusKey];
 	
      isPrepared = YES;
+     return self;
 }
 
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext

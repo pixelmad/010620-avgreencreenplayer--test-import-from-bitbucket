@@ -21,7 +21,7 @@
 	Boolean						isPrepared;
 	}
 
-- (void) load;
+- (id) load;
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext;
 
 @end
