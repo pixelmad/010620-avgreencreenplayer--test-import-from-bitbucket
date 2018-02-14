@@ -57,7 +57,7 @@
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
     NSArray *docs = [[NSDocumentController sharedDocumentController] documents];
-    if ([docs count]==0 && [[NSApplication sharedApplication] keyWindow] == nil)
+    if ( [docs count]==0 && [[NSApplication sharedApplication] keyWindow ] == nil)
     	{
         // If no docs already open, put up open file dialog at program launch
         [ [NSDocumentController sharedDocumentController] openDocument:self ];
