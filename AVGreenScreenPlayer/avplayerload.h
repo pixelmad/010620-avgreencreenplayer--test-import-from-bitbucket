@@ -19,9 +19,14 @@
 	NSSize						moviesize;
 	AVPlayerItemVideoOutput		*playerVideoItemOutput;
 	Boolean						isPrepared;
+	Boolean						isReadyToPlay;
+	Boolean						isNewImageAvailable;
+	CVOpenGLTextureCacheRef		textureCache;
+	CVOpenGLTextureRef			texture;
 	}
 
 - (id) load;
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext;
+- (BOOL) renderAVToTexture;
 
 @end

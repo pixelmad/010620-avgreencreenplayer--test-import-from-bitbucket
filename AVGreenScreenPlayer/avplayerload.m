@@ -13,7 +13,7 @@
 //https://forums.developer.apple.com/thread/27589
 //AVPlayer & AVPlayerItemVideoOutput playback problem on El Capitan
 
-const	NSString		*kStatusKey = @"hello movies";
+const	NSString		*kMyStatusKey = @"hello movies";
 
 @implementation MyAVplayerload
 
@@ -23,7 +23,7 @@ const	NSString		*kStatusKey = @"hello movies";
 	
      NSURL* url = [ NSURL fileURLWithPath:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
      player = [AVPlayer playerWithURL:url];
-     [ player setVolume:0.0];
+     [ player setVolume:0.0 ];
 	
 	
      // Get metadata from its asset...
@@ -76,8 +76,8 @@ const	NSString		*kStatusKey = @"hello movies";
 	
      // Make sure we are notified once the player is ready for playback...
 	
-     [ playerItem addObserver:self forKeyPath:kStatusKey options:NSKeyValueObservingOptionInitial context:&kStatusKey];
-     [ player addObserver:self forKeyPath:kStatusKey options:NSKeyValueObservingOptionInitial context:&kStatusKey];
+     [ playerItem addObserver:self forKeyPath:kMyStatusKey options:NSKeyValueObservingOptionInitial context:&kMyStatusKey ];
+     [ player addObserver:self forKeyPath:kMyStatusKey options:NSKeyValueObservingOptionInitial context:&kMyStatusKey ];
 	
      isPrepared = YES;
      return self;
@@ -85,26 +85,75 @@ const	NSString		*kStatusKey = @"hello movies";
 
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext
 {
-     if (inContext == &kStatusKey)
-     {
-          __weak typeof(self) weakSelf = self;
-          AVPlayer* player = player;
-          AVPlayerItem* playerItem = playerItem;
-  
-          if (player.status == AVPlayerStatusReadyToPlay && playerItem.status == AVPlayerItemStatusReadyToPlay)
-          	{
-        //       CMTime time = CMTimeMakeWithSeconds(_inPoint,_timescale);
-  
-         //      [player seekToTime:time completionHandler:^(BOOL inFinished)
-               {
-          //          weakSelf.isReadyToPlay = YES;
-               }
-             //  ];
-          	}
-     }
-     else
-     {
-          [super observeValueForKeyPath:inKeyPath ofObject:inObject change:inChange context:inContext];
-     }
+	if ( inContext == &kMyStatusKey )
+		{
+		__weak typeof(self) weakSelf = self;
+		AVPlayer* player = player;
+		AVPlayerItem* playerItem = playerItem;
+
+		if (player.status == AVPlayerStatusReadyToPlay && playerItem.status == AVPlayerItemStatusReadyToPlay)
+			{
+			CMTime time = CMTimeMakeWithSeconds( 0, 25 );
+
+			[ player seekToTime:time completionHandler:
+				^(BOOL inFinished)
+				{
+				isReadyToPlay = YES;
+				}
+			  ];
+			}
+		}
+	else
+		{
+		[super observeValueForKeyPath:inKeyPath ofObject:inObject change:inChange context:inContext];
+		}
+}
+
+- (BOOL) renderAVToTexture
+{
+     BOOL isNewImageAvailable = NO;
+   //  AVPlayerItem* playerItem = playerItem;
+     AVPlayerItemVideoOutput* output = playerVideoItemOutput;
+	
+	if (
+			playerItem != nil
+			&& output != nil
+	//		&& isStarted
+			)
+		{
+		CFTimeInterval t = CACurrentMediaTime();
+		CMTime itemTime = [output itemTimeForHostTime:t];
+
+		if ( [ output hasNewPixelBufferForItemTime:itemTime ] )
+			{
+			CMTime presentationTime = kCMTimeZero;
+			CVPixelBufferRef buffer = [output copyPixelBufferForItemTime:itemTime itemTimeForDisplay:&presentationTime];
+
+			if (buffer)
+				{
+				CVOpenGLTextureRef texture = NULL;
+				CVPixelBufferLockBaseAddress(buffer,kCVPixelBufferLock_ReadOnly);
+				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, buffer, 0, &texture );
+
+				if (texture)
+					{
+					if (err == noErr)
+						{
+						texture = texture;
+				//		self.tilesAreLoaded = YES;
+						isNewImageAvailable = YES;
+						}
+
+					CVOpenGLTextureRelease(texture);
+					}
+
+				CVOpenGLTextureCacheFlush( textureCache, 0);
+				CVPixelBufferUnlockBaseAddress(buffer,kCVPixelBufferLock_ReadOnly);
+				CVPixelBufferRelease(buffer);
+				}
+			}
+		}
+	
+     return isNewImageAvailable;
 }
 @end
