@@ -255,6 +255,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			texture2 = [ [Texture alloc] initWithPath:path2 ];
 			texture2Name = [texture2 textureName ];
 
+			theAVGLPlayer = [ [ MyAVplayerload  alloc] load ];
+
 			}
 
 #if 0

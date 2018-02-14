@@ -50,6 +50,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/CVDisplayLink.h>
 #import "Texture.h"
+#import "avplayerload.h"
 
 //#import <QuickTime/QuickTime.h>
 //#import <QTKit/QTKit.h>
@@ -77,9 +78,9 @@
 	NSOpenGLContext 	*openGLContext;
 	NSOpenGLPixelFormat *pixelFormat;
 	
-	CVDisplayLinkRef displayLink;
-	MainController *controller;
-	
+	CVDisplayLinkRef 	displayLink;
+	MainController 		*controller;
+	MyAVplayerload		*theAVGLPlayer;
 	BOOL isAnimating;
 	}
 
