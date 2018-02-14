@@ -11,6 +11,7 @@
 		7113901D203373AE002B41CF /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 7113901C203373AD002B41CF /* Texture.m */; };
 		7113901F20337A6D002B41CF /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7113901E20337A6D002B41CF /* Earth.jpg */; };
 		7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */ = {isa = PBXBuildFile; fileRef = 7113902020337A75002B41CF /* glgui_texture_packer_070616.png */; };
+		7113902420341E32002B41CF /* avplayerload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7113902320341E32002B41CF /* avplayerload.m */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -34,6 +35,8 @@
 		7113901C203373AD002B41CF /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
 		7113901E20337A6D002B41CF /* Earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Earth.jpg; sourceTree = "<group>"; };
 		7113902020337A75002B41CF /* glgui_texture_packer_070616.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glgui_texture_packer_070616.png; sourceTree = "<group>"; };
+		7113902220341E32002B41CF /* avplayerload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = avplayerload.h; sourceTree = "<group>"; };
+		7113902320341E32002B41CF /* avplayerload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = avplayerload.m; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -125,6 +128,8 @@
 			children = (
 				7183593A202F924D009A090B /* MyOpenGLView.h */,
 				7183593B202F924D009A090B /* MyOpenGLView.m */,
+				7113902220341E32002B41CF /* avplayerload.h */,
+				7113902320341E32002B41CF /* avplayerload.m */,
 				7113901B203373AD002B41CF /* Texture.h */,
 				7113901C203373AD002B41CF /* Texture.m */,
 				A65E1743155184A00058E95B /* GSApplicationDelegate.h */,
@@ -253,6 +258,7 @@
 				A65E17401551800B0058E95B /* GSChromaKeyFilter.m in Sources */,
 				A65E17421551802E0058E95B /* GSPlayerView.m in Sources */,
 				A65E1745155184A00058E95B /* GSApplicationDelegate.m in Sources */,
+				7113902420341E32002B41CF /* avplayerload.m in Sources */,
 				7183593C202F924D009A090B /* MyOpenGLView.m in Sources */,
 				7113901D203373AE002B41CF /* Texture.m in Sources */,
 			);
