@@ -17,7 +17,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 @implementation MyAVplayerload
 
-- (id) load
+- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat
 {
      // Create a player...
 	
@@ -68,8 +68,11 @@ const	NSString		*kMyStatusKey = @"hello movies";
      @{
           (NSString*)kCVPixelBufferPixelFormatTypeKey: @(kCVPixelFormatType_32ARGB),
 //        (NSString*)kCVPixelBufferBytesPerRowAlignmentKey: @1,
-          (NSString*)kCVPixelBufferOpenGLCompatibilityKey: @YES
-     };
+//          (NSString*)kCVPixelBufferOpenGLCompatibilityKey: @YES
+          (NSString*)kCVPixelBufferOpenGLTextureCacheCompatibilityKey: @YES
+ 		
+ 
+		  };
 	
      playerVideoItemOutput = [[AVPlayerItemVideoOutput alloc] initWithPixelBufferAttributes:attributes ];
      [ playerItem addOutput:playerVideoItemOutput ];
@@ -79,6 +82,8 @@ const	NSString		*kMyStatusKey = @"hello movies";
      [ playerItem addObserver:self forKeyPath:kMyStatusKey options:NSKeyValueObservingOptionInitial context:&kMyStatusKey ];
      [ player addObserver:self forKeyPath:kMyStatusKey options:NSKeyValueObservingOptionInitial context:&kMyStatusKey ];
 	
+	CVReturn	error = CVOpenGLTextureCacheCreate(kCFAllocatorDefault, NULL, initCGLContext, initPixelFormat, NULL, &textureCache);
+
      isPrepared = YES;
      return self;
 }
@@ -122,22 +127,24 @@ const	NSString		*kMyStatusKey = @"hello movies";
 			)
 		{
 		CFTimeInterval t = CACurrentMediaTime();
-		CMTime itemTime = [output itemTimeForHostTime:t];
+		CMTime itemTime = [ output itemTimeForHostTime:t ];
 
 		if ( [ output hasNewPixelBufferForItemTime:itemTime ] )
 			{
 			CMTime presentationTime = kCMTimeZero;
 			CVPixelBufferRef buffer = [output copyPixelBufferForItemTime:itemTime itemTimeForDisplay:&presentationTime];
+    		int bufferWidth = (int) CVPixelBufferGetWidth( buffer );
+    		int bufferHeight = (int) CVPixelBufferGetHeight( buffer );
 
 			if (buffer)
 				{
 				CVOpenGLTextureRef texture = NULL;
-				CVPixelBufferLockBaseAddress(buffer,kCVPixelBufferLock_ReadOnly);
-				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, buffer, 0, &texture );
+				CVPixelBufferLockBaseAddress( buffer,kCVPixelBufferLock_ReadOnly );
+				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage( kCFAllocatorDefault, textureCache, buffer, 0, &texture );
 
-				if (texture)
+				if ( texture )
 					{
-					if (err == noErr)
+					if ( err == kCVReturnSuccess )
 						{
 						texture = texture;
 				//		self.tilesAreLoaded = YES;

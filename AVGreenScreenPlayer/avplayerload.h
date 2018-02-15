@@ -25,7 +25,7 @@
 	CVOpenGLTextureRef			texture;
 	}
 
-- (id) load;
+- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat;
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext;
 - (BOOL) renderAVToTexture;
 
