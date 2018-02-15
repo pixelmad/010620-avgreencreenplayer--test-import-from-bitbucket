@@ -361,9 +361,18 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			{
 			glPushMatrix();
 			glScalef( 2, 2, 1.0 );
+			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer getTexture ];
+				GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+    		float textureWidth = (int) CVPixelBufferGetWidth( thisTexture );
+    		float	textureHeight = (int) CVPixelBufferGetHeight( thisTexture );
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+
+#if 0
 			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
 			float	textureWidth = [texture1 textureWidth ];
 			float	textureHeight = [texture1 textureHeight ];
+#endif
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
