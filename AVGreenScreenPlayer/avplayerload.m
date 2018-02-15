@@ -138,20 +138,20 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 			if (buffer)
 				{
-				CVOpenGLTextureRef texture = NULL;
-				CVPixelBufferLockBaseAddress( buffer,kCVPixelBufferLock_ReadOnly );
-				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage( kCFAllocatorDefault, textureCache, buffer, 0, &texture );
+				CVOpenGLTextureRef localtexture = NULL;
+				CVPixelBufferLockBaseAddress( buffer, kCVPixelBufferLock_ReadOnly );
+				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage( kCFAllocatorDefault, textureCache, buffer, 0, &localtexture );
 
-				if ( texture )
+				if ( localtexture )
 					{
 					if ( err == kCVReturnSuccess )
 						{
-						texture = texture;
+						texture = localtexture;
 				//		self.tilesAreLoaded = YES;
 						isNewImageAvailable = YES;
 						}
 
-					CVOpenGLTextureRelease(texture);
+			//		CVOpenGLTextureRelease( localtexture );
 					}
 
 				CVOpenGLTextureCacheFlush( textureCache, 0);
@@ -163,4 +163,10 @@ const	NSString		*kMyStatusKey = @"hello movies";
 	
      return isNewImageAvailable;
 }
+
+- ( CVOpenGLTextureRef )	getTexture
+{
+	return texture;
+}
+
 @end
