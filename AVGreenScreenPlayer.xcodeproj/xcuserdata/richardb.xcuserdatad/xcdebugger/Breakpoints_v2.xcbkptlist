@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.845162"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-initWithCGLContextObj:pixelFormat:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.846045"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-initWithCGLContextObj:pixelFormat:"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.8465689"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.847111"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.8475339"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.847873"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.8481539"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.848439"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.848701"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.848999"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.849213"
+            timestampString = "540495290.059639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540474877.849465"
+            timestampString = "540491559.704017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
