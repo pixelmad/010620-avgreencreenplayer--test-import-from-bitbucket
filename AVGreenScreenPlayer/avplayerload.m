@@ -17,6 +17,17 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 @implementation MyAVplayerload
 
+-(void) stepPlay
+{
+//CMTimeMake
+	static	UInt32	thisTime;
+	CMTime newTime = CMTimeMake( thisTime, 25 );
+	[ player seekToTime:newTime ];
+	thisTime ++;
+	if ( thisTime >= ( movieduration * movietimescale ) )
+		thisTime = 0;
+}
+
 - (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat
 {
      // Create a player...

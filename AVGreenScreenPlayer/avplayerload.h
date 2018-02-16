@@ -29,4 +29,6 @@
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext;
 - (BOOL) renderAVToTexture;
 - ( CVOpenGLTextureRef )	getTexture;
+-(void) stepPlay;
+
 @end
