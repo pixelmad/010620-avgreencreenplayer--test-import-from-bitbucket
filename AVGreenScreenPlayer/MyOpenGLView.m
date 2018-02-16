@@ -260,6 +260,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			}
 
 	[ theAVGLPlayer  renderAVToTexture ];
+	[ theAVGLPlayer  stepPlay ];
+	
 	
 #if 0
 	cvTextureTarget = CVOpenGLTextureGetTarget(currentFrame);	// get the texture target (for example, GL_TEXTURE_2D) of the texture
