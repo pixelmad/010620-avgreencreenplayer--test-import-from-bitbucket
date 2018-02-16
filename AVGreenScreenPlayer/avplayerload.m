@@ -154,7 +154,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 			//		CVOpenGLTextureRelease( localtexture );
 					}
 
-				CVOpenGLTextureCacheFlush( textureCache, 0);
+				CVOpenGLTextureCacheFlush( textureCache, 0 );
 				CVPixelBufferUnlockBaseAddress(buffer,kCVPixelBufferLock_ReadOnly);
 				CVPixelBufferRelease(buffer);
 				}
