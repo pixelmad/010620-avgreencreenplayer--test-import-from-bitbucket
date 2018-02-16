@@ -162,7 +162,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 						isNewImageAvailable = YES;
 						}
 
-			//		CVOpenGLTextureRelease( localtexture );
+					//CVOpenGLTextureRelease( localtexture );
 					}
 
 				CVOpenGLTextureCacheFlush( textureCache, 0 );
