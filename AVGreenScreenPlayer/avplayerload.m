@@ -22,13 +22,24 @@ const	NSString		*kMyStatusKey = @"hello movies";
 //CMTimeMake
 	static	UInt32	thisTime;
 	static	UInt32	timeDiv;
-	long	frameCount = movieduration * movietimescale;
-	ldiv_t	frame_div = ldiv( frameCount, 2 );
-	CMTime newTime = CMTimeMake( thisTime, 25 );
-	[ player seekToTime:newTime ];
-	thisTime ++;
-	if ( thisTime >= ( movieduration * movietimescale ) )
-		thisTime = 0;
+//	ldiv_t	frame_div = ldiv( frameCount, 2 );
+	Boolean	newFrameNow  = false;
+	
+	if ( timeDiv == 2 )
+		{
+		timeDiv = 0;
+		newFrameNow = true;
+		}
+	timeDiv ++;
+	if ( newFrameNow )
+		{
+		long frameCount	 = movieduration * movietimescale;
+		CMTime newTime = CMTimeMake( thisTime, 25 );
+		[ player seekToTime:newTime ];
+		thisTime ++;
+		if ( thisTime >= ( frameCount ) )
+			thisTime = 0;
+		}
 }
 
 - (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat
