@@ -22,7 +22,7 @@
 	Boolean						isReadyToPlay;
 	Boolean						isNewImageAvailable;
 	CVOpenGLTextureCacheRef		textureCache;
-	CVOpenGLTextureRef			texture;
+	CVOpenGLTextureRef			textureToRender;
 	}
 
 - (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat;

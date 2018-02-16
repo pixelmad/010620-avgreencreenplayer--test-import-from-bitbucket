@@ -21,6 +21,9 @@ const	NSString		*kMyStatusKey = @"hello movies";
 {
 //CMTimeMake
 	static	UInt32	thisTime;
+	static	UInt32	timeDiv;
+	long	frameCount = movieduration * movietimescale;
+	ldiv_t	frame_div = ldiv( frameCount, 2 );
 	CMTime newTime = CMTimeMake( thisTime, 25 );
 	[ player seekToTime:newTime ];
 	thisTime ++;
@@ -157,12 +160,12 @@ const	NSString		*kMyStatusKey = @"hello movies";
 					{
 					if ( err == kCVReturnSuccess )
 						{
-						texture = localtexture;
+						textureToRender = localtexture;
 				//		self.tilesAreLoaded = YES;
 						isNewImageAvailable = YES;
 						}
 
-					//CVOpenGLTextureRelease( localtexture );
+			//		CVOpenGLTextureRelease( localtexture );
 					}
 
 				CVOpenGLTextureCacheFlush( textureCache, 0 );
@@ -177,7 +180,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 - ( CVOpenGLTextureRef )	getTexture
 {
-	return texture;
+	return textureToRender;
 }
 
 @end
