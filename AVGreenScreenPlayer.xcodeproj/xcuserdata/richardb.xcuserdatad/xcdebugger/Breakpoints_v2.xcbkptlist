@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.5136"
+            timestampString = "540554791.322017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-drawView"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.514385"
+            timestampString = "540554791.322369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.514861"
+            timestampString = "540554791.322506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "151"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.515267"
+            timestampString = "540554791.322598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.5156699"
+            timestampString = "540554791.322686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "-drawView"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.5160919"
+            timestampString = "540554791.3227741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -234,27 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.516554"
+            timestampString = "540554791.322862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
-            landmarkName = "-drawView"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.516993"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
             landmarkName = "-drawView"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,12 +250,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.517409"
+            timestampString = "540554791.322955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-stepPlay:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVGreenScreenPlayer/avplayerload.m"
+            timestampString = "540554791.323814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "-stepPlay"
+            landmarkName = "-stepPlay:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,27 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.51775"
+            timestampString = "540554791.324427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-stepPlay"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.517875"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-initWithCGLContextObj:pixelFormat:fileurl:"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.517994"
+            timestampString = "540554791.324976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -330,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.518108"
+            timestampString = "540554791.325484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-observeValueForKeyPath:ofObject:change:context:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.518222"
+            timestampString = "540554791.326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -362,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.518334"
+            timestampString = "540554791.3265049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.5184439"
+            timestampString = "540554791.327009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-renderAVToTexture"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.518553"
+            timestampString = "540554791.327502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-initWithCGLContextObj:pixelFormat:fileurl:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.518661"
+            timestampString = "540554791.328048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "369"
-            endingLineNumber = "369"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-drawView"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,23 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.51905"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-renderAVToTexture"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AVGreenScreenPlayer/avplayerload.m"
-            timestampString = "540546674.519134"
+            timestampString = "540554791.3281389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
@@ -457,12 +425,28 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
-            timestampString = "540546674.5192111"
+            filePath = "AVGreenScreenPlayer/avplayerload.m"
+            timestampString = "540554791.32865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-renderAVToTexture"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVGreenScreenPlayer/MyOpenGLView.m"
+            timestampString = "540554791.32908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "-drawView"
             landmarkType = "7">
          </BreakpointContent>

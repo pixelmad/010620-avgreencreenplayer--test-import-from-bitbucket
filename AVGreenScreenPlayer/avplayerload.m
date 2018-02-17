@@ -17,13 +17,14 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 @implementation MyAVplayerload
 
--(void) stepPlay
+-(void) stepPlay:(UInt32 )thisPlaySpeed
 {
 //CMTimeMake
 //	ldiv_t	frame_div = ldiv( frameCount, 2 );
 	Boolean	newFrameNow  = false;
+	currentPlaySpeed = thisPlaySpeed;
 	
-	if ( timeDiv == 2 )
+	if ( timeDiv == currentPlaySpeed )
 		{
 		timeDiv = 0;
 		newFrameNow = true;

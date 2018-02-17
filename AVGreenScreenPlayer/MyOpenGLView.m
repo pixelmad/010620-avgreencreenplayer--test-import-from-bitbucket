@@ -256,14 +256,15 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			texture2Name = [texture2 textureName ];
 
 			theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
-			theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
+		//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
+			theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
 
 			}
 
 	[ theAVGLPlayer  renderAVToTexture ];
-	[ theAVGLPlayer  stepPlay ];
+	[ theAVGLPlayer  stepPlay:10 ];
 	[ theAVGLPlayer2  renderAVToTexture ];
-	[ theAVGLPlayer2  stepPlay ];
+	[ theAVGLPlayer2  stepPlay:3 ];
 
 	
 #if 0
