@@ -20,12 +20,10 @@ const	NSString		*kMyStatusKey = @"hello movies";
 -(void) stepPlay
 {
 //CMTimeMake
-	static	UInt32	thisTime;
-	static	UInt32	timeDiv;
 //	ldiv_t	frame_div = ldiv( frameCount, 2 );
 	Boolean	newFrameNow  = false;
 	
-	if ( timeDiv == 2 )
+	if ( timeDiv == 5 )
 		{
 		timeDiv = 0;
 		newFrameNow = true;
@@ -42,11 +40,11 @@ const	NSString		*kMyStatusKey = @"hello movies";
 		}
 }
 
-- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat
+- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat fileurl:(NSString*)path
 {
      // Create a player...
 	
-     NSURL* url = [ NSURL fileURLWithPath:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+     NSURL* url = [ NSURL fileURLWithPath:path ];
      player = [AVPlayer playerWithURL:url];
      [ player setVolume:0.0 ];
 	
@@ -123,6 +121,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 		if (player.status == AVPlayerStatusReadyToPlay && playerItem.status == AVPlayerItemStatusReadyToPlay)
 			{
+			
 			CMTime time = CMTimeMakeWithSeconds( 0, 25 );
 
 			[ player seekToTime:time completionHandler:

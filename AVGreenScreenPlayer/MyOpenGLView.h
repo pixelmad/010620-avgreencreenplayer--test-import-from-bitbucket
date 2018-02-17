@@ -81,6 +81,7 @@
 	CVDisplayLinkRef 	displayLink;
 	MainController 		*controller;
 	MyAVplayerload		*theAVGLPlayer;
+	MyAVplayerload		*theAVGLPlayer2;
 	BOOL isAnimating;
 	}
 

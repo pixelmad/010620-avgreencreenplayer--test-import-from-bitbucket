@@ -24,9 +24,12 @@
 	CVOpenGLTextureCacheRef		textureCache;
 	CVOpenGLTextureRef			textureToRender;
 	CVOpenGLTextureRef 			oldlocaltexture;
+	//step playing
+	UInt32	thisTime;
+	UInt32	timeDiv;
 	}
 
-- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat;
+- (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat  fileurl:(NSString*)path;
 - (void) observeValueForKeyPath:(NSString*)inKeyPath ofObject:(id)inObject change:(NSDictionary*)inChange context:(void*)inContext;
 - (BOOL) renderAVToTexture;
 - ( CVOpenGLTextureRef )	getTexture;

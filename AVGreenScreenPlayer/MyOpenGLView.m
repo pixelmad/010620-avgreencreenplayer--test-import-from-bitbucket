@@ -255,13 +255,16 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			texture2 = [ [Texture alloc] initWithPath:path2 ];
 			texture2Name = [texture2 textureName ];
 
-			theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj]  ];
+			theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+			theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
 
 			}
 
 	[ theAVGLPlayer  renderAVToTexture ];
 	[ theAVGLPlayer  stepPlay ];
-	
+	[ theAVGLPlayer2  renderAVToTexture ];
+	[ theAVGLPlayer2  stepPlay ];
+
 	
 #if 0
 	cvTextureTarget = CVOpenGLTextureGetTarget(currentFrame);	// get the texture target (for example, GL_TEXTURE_2D) of the texture
@@ -409,9 +412,24 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			{
 			glPushMatrix();
 			glColor4f( 1.0, 1.0, 1.0, 1.0 );
-			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture1Name );
-			float	textureWidth = texture1.textureWidth;
-			float	textureHeight = texture1.textureHeight;
+
+			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer2 getTexture ];
+			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+    		GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+			CVOpenGLTextureGetCleanTexCoords( thisTexture,
+						 lowerLeft,
+						 lowerRight,
+						 upperRight,
+						 upperLeft );
+					glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+			
+				float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+				float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+		//	float	textureWidth = texture1.textureWidth;
+		//	float	textureHeight = texture1.textureHeight;
 			glMatrixMode( GL_TEXTURE );
 			glLoadIdentity();
 			glScalef( textureWidth, textureHeight, 1.0 );
