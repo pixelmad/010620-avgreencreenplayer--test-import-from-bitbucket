@@ -23,7 +23,7 @@ const	NSString		*kMyStatusKey = @"hello movies";
 //	ldiv_t	frame_div = ldiv( frameCount, 2 );
 	Boolean	newFrameNow  = false;
 	
-	if ( timeDiv == 5 )
+	if ( timeDiv == 2 )
 		{
 		timeDiv = 0;
 		newFrameNow = true;
