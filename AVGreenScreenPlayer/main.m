@@ -47,7 +47,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#if 0
 int main(int argc, char *argv[])
 {
 	return NSApplicationMain(argc, (const char **)argv);
 }
+
+#endif
