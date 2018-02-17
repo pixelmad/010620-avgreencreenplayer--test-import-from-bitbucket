@@ -12,6 +12,12 @@
 		7113901F20337A6D002B41CF /* Earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7113901E20337A6D002B41CF /* Earth.jpg */; };
 		7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */ = {isa = PBXBuildFile; fileRef = 7113902020337A75002B41CF /* glgui_texture_packer_070616.png */; };
 		7113902420341E32002B41CF /* avplayerload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7113902320341E32002B41CF /* avplayerload.m */; };
+		712B055D20384ED300D71D1B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 712B055520384ED300D71D1B /* README.md */; };
+		712B055E20384ED300D71D1B /* imgui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055720384ED300D71D1B /* imgui.cpp */; };
+		712B055F20384ED300D71D1B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 712B055A20384ED300D71D1B /* LICENSE.txt */; };
+		712B056020384ED300D71D1B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055B20384ED300D71D1B /* imgui_demo.cpp */; };
+		712B056120384ED300D71D1B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055C20384ED300D71D1B /* imgui_draw.cpp */; };
+		712B056320384EF200D71D1B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712B056220384EF200D71D1B /* main.mm */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -37,6 +43,19 @@
 		7113902020337A75002B41CF /* glgui_texture_packer_070616.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glgui_texture_packer_070616.png; sourceTree = "<group>"; };
 		7113902220341E32002B41CF /* avplayerload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = avplayerload.h; sourceTree = "<group>"; };
 		7113902320341E32002B41CF /* avplayerload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = avplayerload.m; sourceTree = "<group>"; };
+		712B055220384ED300D71D1B /* imgui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui.h; sourceTree = "<group>"; };
+		712B055320384ED300D71D1B /* imconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imconfig.h; sourceTree = "<group>"; };
+		712B055420384ED300D71D1B /* stb_rect_pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_rect_pack.h; sourceTree = "<group>"; };
+		712B055520384ED300D71D1B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		712B055620384ED300D71D1B /* stb_truetype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_truetype.h; sourceTree = "<group>"; };
+		712B055720384ED300D71D1B /* imgui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui.cpp; sourceTree = "<group>"; };
+		712B055820384ED300D71D1B /* imgui_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imgui_internal.h; sourceTree = "<group>"; };
+		712B055920384ED300D71D1B /* stb_textedit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_textedit.h; sourceTree = "<group>"; };
+		712B055A20384ED300D71D1B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		712B055B20384ED300D71D1B /* imgui_demo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_demo.cpp; sourceTree = "<group>"; };
+		712B055C20384ED300D71D1B /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_draw.cpp; sourceTree = "<group>"; };
+		712B056220384EF200D71D1B /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		712B056420384F3800D71D1B /* imgui_remote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgui_remote.h; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -82,6 +101,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		712B055120384ED300D71D1B /* imgui */ = {
+			isa = PBXGroup;
+			children = (
+				712B055220384ED300D71D1B /* imgui.h */,
+				712B055320384ED300D71D1B /* imconfig.h */,
+				712B055420384ED300D71D1B /* stb_rect_pack.h */,
+				712B055520384ED300D71D1B /* README.md */,
+				712B055620384ED300D71D1B /* stb_truetype.h */,
+				712B055720384ED300D71D1B /* imgui.cpp */,
+				712B055820384ED300D71D1B /* imgui_internal.h */,
+				712B055920384ED300D71D1B /* stb_textedit.h */,
+				712B055A20384ED300D71D1B /* LICENSE.txt */,
+				712B055B20384ED300D71D1B /* imgui_demo.cpp */,
+				712B055C20384ED300D71D1B /* imgui_draw.cpp */,
+			);
+			path = imgui;
+			sourceTree = "<group>";
+		};
 		A65E170115517EEF0058E95B = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +173,7 @@
 				A65E1744155184A00058E95B /* GSApplicationDelegate.m */,
 				A65E172215517EEF0058E95B /* GSDocument.h */,
 				A65E172315517EEF0058E95B /* GSDocument.m */,
+				712B055120384ED300D71D1B /* imgui */,
 				A65E173315517F2F0058E95B /* Views */,
 				A65E173F15517FF90058E95B /* Filters */,
 				A65E173015517F070058E95B /* XIBs */,
@@ -151,6 +189,8 @@
 				7113902020337A75002B41CF /* glgui_texture_packer_070616.png */,
 				A65E171815517EEF0058E95B /* AVGreenScreenPlayer-Info.plist */,
 				A65E171915517EEF0058E95B /* InfoPlist.strings */,
+				712B056420384F3800D71D1B /* imgui_remote.h */,
+				712B056220384EF200D71D1B /* main.mm */,
 				A65E171C15517EEF0058E95B /* main.m */,
 				A65E171E15517EEF0058E95B /* AVGreenScreenPlayer-Prefix.pch */,
 			);
@@ -240,6 +280,8 @@
 				7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */,
 				A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */,
 				A65E172715517EEF0058E95B /* GSDocument.xib in Resources */,
+				712B055D20384ED300D71D1B /* README.md in Resources */,
+				712B055F20384ED300D71D1B /* LICENSE.txt in Resources */,
 				A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */,
 				7113901F20337A6D002B41CF /* Earth.jpg in Resources */,
 				A65E1741155180270058E95B /* GSChromaKeyFilter.cikernel in Resources */,
@@ -253,14 +295,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712B056320384EF200D71D1B /* main.mm in Sources */,
 				A65E171D15517EEF0058E95B /* main.m in Sources */,
 				A65E172415517EEF0058E95B /* GSDocument.m in Sources */,
 				A65E17401551800B0058E95B /* GSChromaKeyFilter.m in Sources */,
 				A65E17421551802E0058E95B /* GSPlayerView.m in Sources */,
 				A65E1745155184A00058E95B /* GSApplicationDelegate.m in Sources */,
 				7113902420341E32002B41CF /* avplayerload.m in Sources */,
+				712B056120384ED300D71D1B /* imgui_draw.cpp in Sources */,
 				7183593C202F924D009A090B /* MyOpenGLView.m in Sources */,
 				7113901D203373AE002B41CF /* Texture.m in Sources */,
+				712B056020384ED300D71D1B /* imgui_demo.cpp in Sources */,
+				712B055E20384ED300D71D1B /* imgui.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
