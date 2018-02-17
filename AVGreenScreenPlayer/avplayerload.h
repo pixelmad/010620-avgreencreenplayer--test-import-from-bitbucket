@@ -23,6 +23,7 @@
 	Boolean						isNewImageAvailable;
 	CVOpenGLTextureCacheRef		textureCache;
 	CVOpenGLTextureRef			textureToRender;
+	CVOpenGLTextureRef 			oldlocaltexture;
 	}
 
 - (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat;

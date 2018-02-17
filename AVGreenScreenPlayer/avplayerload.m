@@ -158,30 +158,37 @@ const	NSString		*kMyStatusKey = @"hello movies";
 			{
 			CMTime presentationTime = kCMTimeZero;
 			CVPixelBufferRef buffer = [output copyPixelBufferForItemTime:itemTime itemTimeForDisplay:&presentationTime];
-    		int bufferWidth = (int) CVPixelBufferGetWidth( buffer );
-    		int bufferHeight = (int) CVPixelBufferGetHeight( buffer );
+    	//	int bufferWidth = (int) CVPixelBufferGetWidth( buffer );
+    	//	int bufferHeight = (int) CVPixelBufferGetHeight( buffer );
 
 			if (buffer)
 				{
-				CVOpenGLTextureRef localtexture = NULL;
+				CVOpenGLTextureRef newlocaltexture = NULL;
 				CVPixelBufferLockBaseAddress( buffer, kCVPixelBufferLock_ReadOnly );
-				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage( kCFAllocatorDefault, textureCache, buffer, 0, &localtexture );
+				// This is a replacement for glTexImage2D()
 
-				if ( localtexture )
+				if ( oldlocaltexture )
+					{
+					CVOpenGLTextureRelease( oldlocaltexture );
+					}
+
+				CVReturn err = CVOpenGLTextureCacheCreateTextureFromImage( kCFAllocatorDefault, textureCache, buffer, 0, &newlocaltexture );
+
+				if ( newlocaltexture )
 					{
 					if ( err == kCVReturnSuccess )
 						{
-						textureToRender = localtexture;
+						textureToRender = newlocaltexture;
+						oldlocaltexture = textureToRender;
 				//		self.tilesAreLoaded = YES;
 						isNewImageAvailable = YES;
 						}
 
-			//		CVOpenGLTextureRelease( localtexture );
 					}
 
 				CVOpenGLTextureCacheFlush( textureCache, 0 );
-				CVPixelBufferUnlockBaseAddress(buffer,kCVPixelBufferLock_ReadOnly);
-				CVPixelBufferRelease(buffer);
+				CVPixelBufferUnlockBaseAddress( buffer,kCVPixelBufferLock_ReadOnly );
+				CVPixelBufferRelease( buffer );
 				}
 			}
 		}
