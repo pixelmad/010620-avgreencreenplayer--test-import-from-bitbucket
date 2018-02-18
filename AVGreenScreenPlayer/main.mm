@@ -347,11 +347,44 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     IMGUIExample_Draw(milliseconds);
 
 	if ( true )
+		{
+		static	float	animationPhase;
+		animationPhase += 0.1;
+			{
+			glEnable( GL_TEXTURE_RECTANGLE_EXT );
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, texture2Name );
+			float	textureWidth = texture2.textureWidth;
+			float	textureHeight = texture2.textureHeight;
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+	
+ 	//		glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+              	glBegin(GL_QUADS);
+                    glTexCoord2f( 0, 0 );
+						glVertex2f(-1, -1);
+						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+                    glTexCoord2f( 0, 1 );
+						glVertex2f(-1,  1);
+  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+                    glTexCoord2f( 1, 1 );
+						glVertex2f( 1,  1);
+						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+                    glTexCoord2f( 1, 0 );
+						glVertex2f( 1, -1);
+						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+                glEnd();
+		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
+			glDisable( GL_TEXTURE_RECTANGLE_EXT );
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glMatrixMode( GL_MODELVIEW );
+			}
+		if ( false )
 			{
 			float	textureWidth = 1;
 			float	textureHeight = 1;
-			static	float	animationPhase;
-			animationPhase += 0.1;
 			glPushMatrix();
 			glColor4f( 1.0, 1.0, 1.0, 1.0 );
 #if 0
@@ -382,7 +415,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glutWireTeapot( 0.5 );
 			glPopMatrix();
 			}
-
+		}
     ImGui::Render();
 
     g_lastClock = thisclock;
