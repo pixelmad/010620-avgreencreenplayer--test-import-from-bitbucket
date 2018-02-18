@@ -376,18 +376,15 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 						glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
 		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
-			glDisable( GL_TEXTURE_RECTANGLE_EXT );
-			glMatrixMode( GL_TEXTURE );
-			glLoadIdentity();
-			glMatrixMode( GL_MODELVIEW );
 			}
-		if ( false )
+		if ( true )
 			{
-			float	textureWidth = 1;
-			float	textureHeight = 1;
+			glEnable( GL_TEXTURE_RECTANGLE_EXT );
+	//		float	textureWidth = 1;
+	//		float	textureHeight = 1;
 			glPushMatrix();
 			glColor4f( 1.0, 1.0, 1.0, 1.0 );
-#if 0
+#if 1
 			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer2 getTexture ];
 			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
 			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
@@ -411,11 +408,16 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
 			glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( 0.5 );
-			glColor4f( 0.0, 1.0, .2, 1.0 );
-			glutWireTeapot( 0.5 );
+			glColor4f( 0.0, 1.0, .2, .2 );
+		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
 			}
 		}
+
+	glDisable( GL_TEXTURE_RECTANGLE_EXT );
+	glMatrixMode( GL_TEXTURE );
+	glLoadIdentity();
+	glMatrixMode( GL_MODELVIEW );
     ImGui::Render();
 
     g_lastClock = thisclock;
