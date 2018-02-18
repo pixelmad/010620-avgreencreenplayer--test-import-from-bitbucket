@@ -1,6 +1,9 @@
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/gl.h>
 #import <OpenGL/glu.h>
+#import <GLUT/glut.h>
+
+
 #include "imgui.h"
 // @RemoteImgui begin
 //#include "imgui_remote.h"
@@ -256,6 +259,39 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     glViewport(0, 0, width, height);
     glClearColor(clear_col.x, clear_col.y, clear_col.z, clear_col.w);
     glClear(GL_COLOR_BUFFER_BIT);
+	
+			{
+			glPushMatrix();
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
+#if 0
+			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer2 getTexture ];
+			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+    		GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+			CVOpenGLTextureGetCleanTexCoords( thisTexture,
+						 lowerLeft,
+						 lowerRight,
+						 upperRight,
+						 upperLeft );
+					glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+			
+				float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+				float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+#endif
+		//	float	textureWidth = texture1.textureWidth;
+		//	float	textureHeight = texture1.textureHeight;
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+	//		glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+ 	//		glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
+	 		glutSolidTeapot( 0.5 );
+			glutWireTeapot( 0.5 );
+			glPopMatrix();
+			}
+
     ImGui::Render();
 }
 
