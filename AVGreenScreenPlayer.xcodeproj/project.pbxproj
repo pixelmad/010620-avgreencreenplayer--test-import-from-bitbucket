@@ -408,6 +408,7 @@
 		A65E172E15517EEF0058E95B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AVGreenScreenPlayer/AVGreenScreenPlayer-Prefix.pch";
@@ -420,6 +421,7 @@
 		A65E172F15517EEF0058E95B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AVGreenScreenPlayer/AVGreenScreenPlayer-Prefix.pch";

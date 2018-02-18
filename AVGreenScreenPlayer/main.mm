@@ -146,7 +146,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     // Display size, in pixels. For clamping windows positions.
     //io.DisplaySize = ImVec2((float)g_windowWidth, (float)g_windowHeight);
     io.DisplaySize = ImVec2((float)VCANVAS_WIDTH, (float)VCANVAS_HEIGHT);
-    io.DeltaTime = elapsedMilliseconds/100.0; //convert in seconds
+    io.DeltaTime = elapsedMilliseconds/1000.0; //convert in seconds
     // @RemoteImgui begin
 
 //	ImGui::RemoteUpdate();
@@ -303,7 +303,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 {
     [super prepareOpenGL];
     
-#ifndef DEBUG
+#if	1//ndef DEBUG
     GLint swapInterval = 1;
     [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
 
@@ -337,7 +337,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 {
     clock_t thisclock = clock();
     unsigned long clock_delay = thisclock - g_lastClock;
-    double milliseconds = clock_delay * 1000.0f / CLOCKS_PER_SEC;
+    double milliseconds = ( clock_delay * 1000.0f ) / CLOCKS_PER_SEC;
 
 	[ theAVGLPlayer  renderAVToTexture ];
 	[ theAVGLPlayer  stepPlay:10 ];
@@ -425,9 +425,9 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     [[self openGLContext] flushBuffer];
     
     if (!animationTimer)
-    {
+    	{
         animationTimer = [NSTimer scheduledTimerWithTimeInterval:0.017 target:self selector:@selector(animationTimerFired:) userInfo:nil repeats:YES];
-    }
+    	}
 }
 
 -(void)setViewportRect:(NSRect)bounds
