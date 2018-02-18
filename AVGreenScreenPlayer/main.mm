@@ -260,47 +260,24 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     glClearColor(clear_col.x, clear_col.y, clear_col.z, clear_col.w);
     glClear(GL_COLOR_BUFFER_BIT);
 	
-			{
-			glPushMatrix();
-			glColor4f( 1.0, 1.0, 1.0, 1.0 );
-#if 0
-			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer2 getTexture ];
-			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
-			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
-    		GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
-			CVOpenGLTextureGetCleanTexCoords( thisTexture,
-						 lowerLeft,
-						 lowerRight,
-						 upperRight,
-						 upperLeft );
-					glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
-			
-				float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
-				float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
 
-			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
-#endif
-		//	float	textureWidth = texture1.textureWidth;
-		//	float	textureHeight = texture1.textureHeight;
-			glMatrixMode( GL_TEXTURE );
-			glLoadIdentity();
-	//		glScalef( textureWidth, textureHeight, 1.0 );
-			glMatrixMode( GL_MODELVIEW );
- 	//		glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
-	 		glutSolidTeapot( 0.5 );
-			glutWireTeapot( 0.5 );
-			glPopMatrix();
-			}
-
-    ImGui::Render();
+ //   ImGui::Render();
 }
 
 //------------------------------------------------------------------
 // IMGUIExampleView
 //------------------------------------------------------------------
+#import "Texture.h"
+#import "avplayerload.h"
 
 @interface IMGUIExampleView : NSOpenGLView
 {
+	Texture 			*texture1;
+	GLint 				texture1Name;
+	Texture 			*texture2;
+	GLint 				texture2Name;
+	MyAVplayerload		*theAVGLPlayer;
+	MyAVplayerload		*theAVGLPlayer2;
     NSTimer *animationTimer;
 }
 @end
@@ -329,11 +306,31 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 #ifndef DEBUG
     GLint swapInterval = 1;
     [[self openGLContext] setValues:&swapInterval forParameter:NSOpenGLCPSwapInterval];
+
+
     if (swapInterval == 0)
     {
         NSLog(@"Error: Cannot set swap interval.");
     }
 #endif
+	if ( !texture1Name )
+		{
+		NSString *path = [[NSBundle mainBundle] pathForResource:@"glgui_texture_packer_070616" ofType:@"png"];
+		
+		
+		texture1 = [ [Texture alloc] initWithPath:path];
+		texture1Name = [texture1 textureName];
+
+		NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
+		texture2 = [ [Texture alloc] initWithPath:path2 ];
+		texture2Name = [texture2 textureName ];
+
+		theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
+		theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+
+		}
+
 }
 
 - (void)drawView
@@ -342,7 +339,51 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     unsigned long clock_delay = thisclock - g_lastClock;
     double milliseconds = clock_delay * 1000.0f / CLOCKS_PER_SEC;
 
+	[ theAVGLPlayer  renderAVToTexture ];
+	[ theAVGLPlayer  stepPlay:10 ];
+	[ theAVGLPlayer2  renderAVToTexture ];
+	[ theAVGLPlayer2  stepPlay:3 ];
+
     IMGUIExample_Draw(milliseconds);
+
+	if ( true )
+			{
+			float	textureWidth = 1;
+			float	textureHeight = 1;
+			static	float	animationPhase;
+			animationPhase += 0.1;
+			glPushMatrix();
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
+#if 0
+			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer2 getTexture ];
+			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+    		GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+			CVOpenGLTextureGetCleanTexCoords( thisTexture,
+						 lowerLeft,
+						 lowerRight,
+						 upperRight,
+						 upperLeft );
+					glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+			
+				float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+				float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+#endif
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+ 			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
+			glColor4f( 0.0, 0.4, .8, 1.0 );
+	 		glutSolidTeapot( 0.5 );
+			glColor4f( 0.0, 1.0, .2, 1.0 );
+			glutWireTeapot( 0.5 );
+			glPopMatrix();
+			}
+
+    ImGui::Render();
 
     g_lastClock = thisclock;
 
