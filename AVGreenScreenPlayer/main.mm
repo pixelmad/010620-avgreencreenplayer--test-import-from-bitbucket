@@ -132,6 +132,21 @@ void IMGUIExample_InitImGui()
 	// @RemoteImgui end
 }
 
+float	loadFloat( const char *path )
+{
+ 	NSUserDefaults *defaults = [ NSUserDefaults standardUserDefaults ];
+	float	ret  = [ defaults floatForKey:[ NSString stringWithUTF8String: path ] ];
+	return ret;
+}
+
+void	saveFloat( const char *path, float	saveValue )
+{
+ 	NSUserDefaults *defaults = [ NSUserDefaults standardUserDefaults ];
+	[defaults setFloat:saveValue forKey:[ NSString stringWithUTF8String: path ] ];
+}
+
+static float		teapotSize = loadFloat( "teapot/size" );
+
 void IMGUIExample_Draw(double elapsedMilliseconds)
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -228,9 +243,8 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     // 1. Show a simple window
     // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
     {
-        static float f;
         ImGui::Text("Hello, world!");
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
+        ImGui::SliderFloat("float", &teapotSize, 0.0f, 1.0f);
         ImGui::ColorEdit3("clear color", (float*)&clear_col);
         if (ImGui::Button("Test Window")) show_test_window ^= 1;
         if (ImGui::Button("Another Window")) show_another_window ^= 1;
@@ -337,6 +351,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 {
     clock_t thisclock = clock();
     unsigned long clock_delay = thisclock - g_lastClock;
+    g_lastClock = thisclock;
     double milliseconds = ( clock_delay * 1000.0f ) / CLOCKS_PER_SEC;
 
 	[ theAVGLPlayer  renderAVToTexture ];
@@ -348,6 +363,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 
 	if ( true )
 		{
+	//	glEnable( GL_DEPTH );
 		static	float	animationPhase;
 		animationPhase += 0.1;
 			{
@@ -420,7 +436,6 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 	glMatrixMode( GL_MODELVIEW );
     ImGui::Render();
 
-    g_lastClock = thisclock;
 
     [[self openGLContext] flushBuffer];
     
@@ -727,7 +742,8 @@ static void resetKeys()
  //   [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
     [self setupMenu];
     
     NSOpenGLPixelFormatAttribute attrs[] =
@@ -748,15 +764,20 @@ static void resetKeys()
     [self.window setContentView:view];
     
     if ([view openGLContext] == nil)
-    {
+    	{
         NSLog(@"No OpenGL Context!");
-    }
+    	}
 	ImGui::CreateContext();
     IMGUIExample_InitImGui();
     // This is needed to accept mouse move events
     [self.window setAcceptsMouseMovedEvents:YES];
     // This is needed to accept mouse events before clicking on the window
     [self.window makeFirstResponder:view];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+	saveFloat( "teapot/size", teapotSize );
 }
 
 @end
@@ -769,7 +790,7 @@ int main(int argc, const char * argv[])
 {
  //   [[NSAutoreleasePool alloc] init];
     NSApp = [NSApplication sharedApplication];
-    
+	
     IMGUIExampleAppDelegate *delegate = [[IMGUIExampleAppDelegate alloc] init];
     
     [[NSApplication sharedApplication] setDelegate:delegate];
