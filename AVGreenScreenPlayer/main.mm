@@ -423,7 +423,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glMatrixMode( GL_MODELVIEW );
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
 			glColor4f( 0.0, 0.4, .8, 1.0 );
-	 		glutSolidTeapot( 0.5 );
+	 		glutSolidTeapot( teapotSize );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
