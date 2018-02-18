@@ -513,7 +513,6 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 }
 
 #pragma mark Mouse and Key Events.
-
 static bool mapKeymap(int* keymap)
 {
     if(*keymap == NSUpArrowFunctionKey)
