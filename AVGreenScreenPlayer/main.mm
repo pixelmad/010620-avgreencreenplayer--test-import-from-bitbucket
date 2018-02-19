@@ -150,7 +150,26 @@ void	saveFloat( const char *path, float	saveValue )
 	[defaults setFloat:saveValue forKey:[ NSString stringWithUTF8String: path ] ];
 }
 
+Boolean	loadBoolean( const char *path, Boolean	defaultValue )
+{
+	Boolean	ret = defaultValue;
+ 	NSUserDefaults *defaults = [ NSUserDefaults standardUserDefaults ];
+	NSString	*pKey = [ NSString stringWithUTF8String: path ];
+	if ( [ defaults objectForKey:pKey ] )
+		{
+		ret  = [ defaults boolForKey:pKey ];
+		}
+	return ret;
+}
+
+void	saveBoolean( const char *path, Boolean	saveValue )
+{
+ 	NSUserDefaults *defaults = [ NSUserDefaults standardUserDefaults ];
+	[defaults setBool:saveValue forKey:[ NSString stringWithUTF8String: path ] ];
+}
+
 static float		teapotSize = loadFloat( "teapot/size", 0.5 );
+static Boolean		exampleWindowVisible = loadBoolean( "window/example/visible", false );
 
 void IMGUIExample_Draw(double elapsedMilliseconds)
 {
@@ -241,7 +260,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     }
     // Start the frame
     ImGui::NewFrame();
-    static bool show_test_window = true;
+//    static bool show_test_window = true;
     static bool show_another_window = false;
     static ImVec4 clear_col = ImColor(114, 144, 154);
 
@@ -251,7 +270,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
         ImGui::Text("Hello, world!");
         ImGui::SliderFloat("float", &teapotSize, 0.0f, 1.0f);
         ImGui::ColorEdit3("clear color", (float*)&clear_col);
-        if (ImGui::Button("Test Window")) show_test_window ^= 1;
+        if (ImGui::Button("Test Window")) exampleWindowVisible ^= 1;
         if (ImGui::Button("Another Window")) show_another_window ^= 1;
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         ImGui::Text("Mouse X=%.1f, Y=%.1f", ImGui::GetIO().MousePos.x, ImGui::GetIO().MousePos.y);
@@ -266,7 +285,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     }
 
     // 3. Show the ImGui test window. Most of the sample code is in ImGui::ShowTestWindow()
-    if (show_test_window)
+    if ( exampleWindowVisible )
     {
         ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);
         ImGui::ShowTestWindow();
@@ -840,6 +859,8 @@ static void resetKeys()
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
 	saveFloat( "teapot/size", teapotSize );
+	saveBoolean( "window/example/visible", exampleWindowVisible );
+
 }
 
 @end
