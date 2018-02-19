@@ -114,16 +114,20 @@ NSString* const GSMouseUpNotification = @"GSMouseUpNotification";
 
 - (id)init
 {
-	self = [super init];
+	id	ret = nil;
+#if 1
+	ret = self = [super init];
 	
-	if (self)
-	{
+	if ( self )
+		{
 		_player = [[AVPlayer alloc] init];
 		
 		[self addTimeObserverToPlayer];
-    }
+   		 }
 	
-	return self;
+#endif
+	return ret;
+
 }
 
 - (void)dealloc
