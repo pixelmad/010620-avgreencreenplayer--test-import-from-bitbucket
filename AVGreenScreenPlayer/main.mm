@@ -132,10 +132,15 @@ void IMGUIExample_InitImGui()
 	// @RemoteImgui end
 }
 
-float	loadFloat( const char *path )
+float	loadFloat( const char *path, float	defaultValue )
 {
+	float	ret = defaultValue;
  	NSUserDefaults *defaults = [ NSUserDefaults standardUserDefaults ];
-	float	ret  = [ defaults floatForKey:[ NSString stringWithUTF8String: path ] ];
+	NSString	*pKey = [ NSString stringWithUTF8String: path ];
+	if ( [ defaults objectForKey:pKey ] )
+		{
+		ret  = [ defaults floatForKey:pKey ];
+		}
 	return ret;
 }
 
@@ -145,7 +150,7 @@ void	saveFloat( const char *path, float	saveValue )
 	[defaults setFloat:saveValue forKey:[ NSString stringWithUTF8String: path ] ];
 }
 
-static float		teapotSize = loadFloat( "teapot/size" );
+static float		teapotSize = loadFloat( "teapot/size", 0.5 );
 
 void IMGUIExample_Draw(double elapsedMilliseconds)
 {
