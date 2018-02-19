@@ -772,6 +772,13 @@ static void resetKeys()
     [self.window setAcceptsMouseMovedEvents:YES];
     // This is needed to accept mouse events before clicking on the window
     [self.window makeFirstResponder:view];
+
+	if ( true )	//goto full screen
+		{
+		NSRect	screenFrame = [[NSScreen mainScreen] frame];
+		[self.window setFrame:screenFrame display:YES];
+		[self.window toggleFullScreen:self];
+		}
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
