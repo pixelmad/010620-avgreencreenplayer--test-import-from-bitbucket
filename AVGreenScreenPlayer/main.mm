@@ -647,6 +647,17 @@ static void resetKeys()
     g_mouseCoords[1] = mousePosition.y - 1.0f;
 }
 
+- (void)rightMouseDown:(NSEvent *)theEvent
+{
+    NSLog(@"entered rightMouseDown");
+    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    [theMenu insertItemWithTitle:@"Beep" action:@selector(beep:) keyEquivalent:@"" atIndex:0];
+    [theMenu insertItemWithTitle:@"Honk" action:@selector(honk:) keyEquivalent:@"" atIndex:1];
+ 
+    [NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
+}
+
+
 - (void)scrollWheel:(NSEvent *)event
 {
     double deltaX, deltaY;
