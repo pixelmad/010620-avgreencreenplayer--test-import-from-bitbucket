@@ -169,6 +169,7 @@ void	saveBoolean( const char *path, Boolean	saveValue )
 }
 
 static float		teapotSize = loadFloat( "teapot/size", 0.5 );
+static float		teapotSize2 = loadFloat( "teapot/size2", 0.3 );
 static Boolean		exampleWindowVisible = loadBoolean( "window/example/visible", false );
 
 void IMGUIExample_Draw(double elapsedMilliseconds)
@@ -268,7 +269,8 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
     {
         ImGui::Text("Hello, world!");
-        ImGui::SliderFloat("float", &teapotSize, 0.0f, 1.0f);
+        ImGui::SliderFloat("teapot 1", &teapotSize, 0.0f, 1.0f);
+        ImGui::SliderFloat("teapot 2", &teapotSize2, 0.0f, 1.0f);
         ImGui::ColorEdit3("clear color", (float*)&clear_col);
         if (ImGui::Button("Test Window")) exampleWindowVisible ^= 1;
         if (ImGui::Button("Another Window")) show_another_window ^= 1;
@@ -365,7 +367,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 
 		theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
-		theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+		theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/006 turn screw export cat media/049 mad test 1+blackB-Apple ProRes 422 Proxy.mov" ];
 
 		}
 
@@ -448,6 +450,41 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
 			glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( teapotSize );
+			glColor4f( 0.0, 1.0, .2, .2 );
+		//	glutWireTeapot( 0.5 );
+			glPopMatrix();
+			}
+		if ( true )
+			{
+			glEnable( GL_TEXTURE_RECTANGLE_EXT );
+	//		float	textureWidth = 1;
+	//		float	textureHeight = 1;
+			glPushMatrix();
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
+#if 1
+			CVOpenGLTextureRef		thisTexture = [ theAVGLPlayer getTexture ];
+			GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+			GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+    		GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+			CVOpenGLTextureGetCleanTexCoords( thisTexture,
+						 lowerLeft,
+						 lowerRight,
+						 upperRight,
+						 upperLeft );
+					glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+			
+				float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+				float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+			glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+#endif
+			glMatrixMode( GL_TEXTURE );
+			glLoadIdentity();
+			glScalef( textureWidth, textureHeight, 1.0 );
+			glMatrixMode( GL_MODELVIEW );
+ 			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
+			glColor4f( 0.0, 0.4, .8, 1.0 );
+	 		glutSolidTeapot( teapotSize2 );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
