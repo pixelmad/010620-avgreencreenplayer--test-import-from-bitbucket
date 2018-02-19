@@ -647,14 +647,47 @@ static void resetKeys()
     g_mouseCoords[1] = mousePosition.y - 1.0f;
 }
 
+-(void )contextMenuAction:(id)sender
+{
+	// sending additional information from the menu...
+	//https://stackoverflow.com/questions/2824287/how-do-i-set-the-sender-on-a-nsmenuitems-action
+	NSLog(@"menu action ");
+    NSLog(@"The menu item's object is %@",[sender representedObject]);
+}
+
+-(void )beep:(id)sender
+{
+	NSLog(@"menu action 2 ");
+}
+
+-(void )honk:(id)sender
+{
+	NSLog(@"menu action 3 ");
+}
+
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
     NSLog(@"entered rightMouseDown");
-    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
-    [theMenu insertItemWithTitle:@"Beep" action:@selector(beep:) keyEquivalent:@"" atIndex:0];
-    [theMenu insertItemWithTitle:@"Honk" action:@selector(honk:) keyEquivalent:@"" atIndex:1];
- 
-    [NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
+
+	//https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/MenuList/Articles/DisplayContextMenu.html
+	
+	if ( true )	// try popup menu
+		{
+		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+		[theMenu insertItemWithTitle:@"Beep" action:@selector(beep:) keyEquivalent:@"" atIndex:0];
+		
+		NSMenuItem *item = [ theMenu insertItemWithTitle:[NSString stringWithFormat:@"%d - %@", 0, @"hello" ] action:@selector(contextMenuAction:) keyEquivalent:@"" atIndex:0 ];
+		[item setTarget:self ];
+   		 [item setEnabled:YES ];
+		[item setRepresentedObject:@"hello data" ];
+		
+//		[ theMenu addItem:item ];
+//		[theMenu insertItemWithTitle:@"Beep" action:@selector(beep:) keyEquivalent:@"" atIndex:0];
+		
+		[theMenu insertItemWithTitle:@"Honk" action:@selector(honk:) keyEquivalent:@"" atIndex:1];
+	 
+		[NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self];
+		}
 }
 
 
@@ -730,6 +763,12 @@ static void resetKeys()
     return(_window);
 }
 
+- (void) terminateApplicationTest
+{
+	NSLog(@"quit?");
+
+}
+
 - (void)setupMenu
 {
     NSMenu *mainMenuBar;
@@ -739,6 +778,7 @@ static void resetKeys()
     mainMenuBar = [[NSMenu alloc] init];
     
     appMenu = [[NSMenu alloc] initWithTitle:@"IMGUI OSX Sample"];
+//    menuItem = [appMenu addItemWithTitle:@"Quit IMGUI OSX Sample" action:@selector(terminateApplicationTest:) keyEquivalent:@"q"];
     menuItem = [appMenu addItemWithTitle:@"Quit IMGUI OSX Sample" action:@selector(terminate:) keyEquivalent:@"q"];
     [menuItem setKeyEquivalentModifierMask:NSCommandKeyMask];
     
