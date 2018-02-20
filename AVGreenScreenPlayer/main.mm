@@ -98,7 +98,12 @@ void ImImpl_RenderDrawLists(ImDrawData* draw_data)
 void LoadFontsTexture()
 {
     ImGuiIO& io = ImGui::GetIO();
-    unsigned char* pixels;
+// load additional fonts
+    io.Fonts->AddFontDefault();
+	io.Fonts->AddFontFromFileTTF( "/Users/richardb/Downloads/imgui-master-2/extra_fonts/Karla-Regular.ttf", 16.0 );
+ 
+	
+	unsigned char* pixels;
     int width, height;
     io.Fonts->GetTexDataAsAlpha8(&pixels, &width, &height);
 
@@ -372,6 +377,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 		}
 
 }
+
 
 - (void)drawView
 {
