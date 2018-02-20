@@ -100,9 +100,10 @@ void LoadFontsTexture()
     ImGuiIO& io = ImGui::GetIO();
 // load additional fonts
     io.Fonts->AddFontDefault();
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"Karla-Regular.ttf" ofType:@"ttf"];
-
-	io.Fonts->AddFontFromFileTTF( "/Users/richardb/Downloads/imgui-master-2/extra_fonts/Karla-Regular.ttf", 16.0 );
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"Karla-Regular" ofType:@"ttf"];
+	char path_s[ 512 ];
+	[ path getCString:path_s maxLength:512 encoding:NSASCIIStringEncoding ];
+	io.Fonts->AddFontFromFileTTF( path_s, 16.0 );
  
 	
 	unsigned char* pixels;
