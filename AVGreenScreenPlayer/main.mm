@@ -100,6 +100,8 @@ void LoadFontsTexture()
     ImGuiIO& io = ImGui::GetIO();
 // load additional fonts
     io.Fonts->AddFontDefault();
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"Karla-Regular.ttf" ofType:@"ttf"];
+
 	io.Fonts->AddFontFromFileTTF( "/Users/richardb/Downloads/imgui-master-2/extra_fonts/Karla-Regular.ttf", 16.0 );
  
 	

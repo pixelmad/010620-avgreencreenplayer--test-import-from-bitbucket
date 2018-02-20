@@ -56,6 +56,7 @@
 		712B055C20384ED300D71D1B /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_draw.cpp; sourceTree = "<group>"; };
 		712B056220384EF200D71D1B /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		712B056420384F3800D71D1B /* imgui_remote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgui_remote.h; sourceTree = "<group>"; };
+		712B0565203CE18000D71D1B /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -185,6 +186,7 @@
 		A65E171715517EEF0058E95B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				712B0565203CE18000D71D1B /* Karla-Regular.ttf */,
 				7113901E20337A6D002B41CF /* Earth.jpg */,
 				7113902020337A75002B41CF /* glgui_texture_packer_070616.png */,
 				A65E171815517EEF0058E95B /* AVGreenScreenPlayer-Info.plist */,
