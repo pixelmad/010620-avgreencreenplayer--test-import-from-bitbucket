@@ -862,6 +862,19 @@ static void resetKeys()
  //   [super dealloc];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification
+{
+// gs doc controller not accessed  but this one is
+    NSArray *docs = [[NSDocumentController sharedDocumentController] documents];
+    if ( [docs count]==0 && [[NSApplication sharedApplication] keyWindow ] == nil)
+    	{
+	//	[ [NSDocumentController sharedDocumentController] newDocument:0 ];
+        // If no docs already open, put up open file dialog at program launch
+ //       [ [NSDocumentController sharedDocumentController] openDocument:self ];
+    	}
+	
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self setupMenu];
