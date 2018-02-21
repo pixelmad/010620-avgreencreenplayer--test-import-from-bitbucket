@@ -422,19 +422,20 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			glMatrixMode( GL_MODELVIEW );
 	
  	//		glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
               	glBegin(GL_QUADS);
                     glTexCoord2f( 0, 0 );
 						glVertex2f(-1, -1);
-						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+			//			glColor4f( 1.0, 0.0, 0.0, 1.0 );
                     glTexCoord2f( 0, 1 );
 						glVertex2f(-1,  1);
-  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+  			//			glColor4f( 0.0, 1.0, 0.0, 1.0 );
                     glTexCoord2f( 1, 1 );
 						glVertex2f( 1,  1);
-						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+			//			glColor4f( 0.0, 0.0, 1.0, 1.0 );
                     glTexCoord2f( 1, 0 );
 						glVertex2f( 1, -1);
-						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+			//			glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
 		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 			}
@@ -477,7 +478,8 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			}
 		if ( true )
 			{
-   			 glViewport( 200, 200, 200, 200 );
+			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 1, 3, 3 );
+   		//	 glViewport( 200, 200, 200, 200 );
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	//		float	textureWidth = 1;
 	//		float	textureHeight = 1;
