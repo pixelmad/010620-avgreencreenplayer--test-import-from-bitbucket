@@ -6,6 +6,9 @@
 #include <stdlib.h>
 
 #include "imgui.h"
+
+#define NUM_TEST_MOVIES		8
+
 // @RemoteImgui begin
 //#include "imgui_remote.h"
 #define VCANVAS_WIDTH  8192
@@ -325,6 +328,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 	GLint 				texture1Name;
 	Texture 			*texture2;
 	GLint 				texture2Name;
+	MyAVplayerload		*theAVGLPlayers[ NUM_TEST_MOVIES ];
 	MyAVplayerload		*theAVGLPlayer;
 	MyAVplayerload		*theAVGLPlayer2;
     NSTimer *animationTimer;
@@ -374,10 +378,15 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 		texture2 = [ [Texture alloc] initWithPath:path2 ];
 		texture2Name = [texture2 textureName ];
 
+#if 0
 		theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
 		theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/006 turn screw export cat media/049 mad test 1+blackB-Apple ProRes 422 Proxy.mov" ];
-
+#endif
+		for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+			{
+			theAVGLPlayers[ whichMovie ] = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+			}
 		}
 
 }
@@ -399,11 +408,17 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
     g_lastClock = thisclock;
     double milliseconds = ( clock_delay * 1000.0f ) / CLOCKS_PER_SEC;
 
+	for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+		{
+		[ theAVGLPlayers[ whichMovie ]  renderAVToTexture ];
+		[ theAVGLPlayers[ whichMovie ]  stepPlay:2 ];
+		}
+#if 0
 	[ theAVGLPlayer  renderAVToTexture ];
 	[ theAVGLPlayer  stepPlay:2 ];
 	[ theAVGLPlayer2  renderAVToTexture ];
 	[ theAVGLPlayer2  stepPlay:2 ];
-
+#endif
     IMGUIExample_Draw(milliseconds);
 
 	if ( true )
@@ -441,6 +456,46 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			}
 		if ( true )
 			{
+			for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+				{
+				SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), whichMovie, 3, 3 );
+		//		 glViewport(0, 0, 200, 200);
+				glEnable( GL_TEXTURE_RECTANGLE_EXT );
+		//		float	textureWidth = 1;
+		//		float	textureHeight = 1;
+				glPushMatrix();
+				glColor4f( 1.0, 1.0, 1.0, 1.0 );
+	#if 1
+				CVOpenGLTextureRef		thisTexture = [ theAVGLPlayers[ whichMovie ] getTexture ];
+				GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+				GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+				GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+				CVOpenGLTextureGetCleanTexCoords( thisTexture,
+							 lowerLeft,
+							 lowerRight,
+							 upperRight,
+							 upperLeft );
+						glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+				
+					float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+					float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+				glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+	#endif
+				glMatrixMode( GL_TEXTURE );
+				glLoadIdentity();
+				glScalef( textureWidth, textureHeight, 1.0 );
+				glMatrixMode( GL_MODELVIEW );
+				glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
+			//	glColor4f( 0.0, 0.4, .8, 1.0 );
+				glutSolidTeapot( teapotSize );
+				glColor4f( 0.0, 1.0, .2, .2 );
+			//	glutWireTeapot( 0.5 );
+				glPopMatrix();
+				}
+			}
+		if ( false )
+			{
 			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 0, 3, 3 );
    	//		 glViewport(0, 0, 200, 200);
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
@@ -476,7 +531,7 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
 			}
-		if ( true )
+		if ( false )
 			{
 			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 1, 3, 3 );
    		//	 glViewport( 200, 200, 200, 200 );
