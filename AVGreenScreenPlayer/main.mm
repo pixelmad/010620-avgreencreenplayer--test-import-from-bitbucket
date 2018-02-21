@@ -7,7 +7,7 @@
 
 #include "imgui.h"
 
-#define NUM_TEST_MOVIES		8
+#define NUM_TEST_MOVIES		6
 
 // @RemoteImgui begin
 //#include "imgui_remote.h"
@@ -397,7 +397,7 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 	div_t	viewDiv = div( viewPortIndex, widthCount );
 	float	viewPortWidth = fullScreen.size.width / widthCount;
 	float	viewPortHeight = fullScreen.size.height / heightCount;
-	CGRect	viewPortRect = CGRectMake( viewDiv.quot * viewPortWidth, viewDiv.rem * viewPortHeight, viewPortWidth , viewPortHeight );
+	CGRect	viewPortRect = CGRectMake( viewDiv.rem * viewPortWidth, viewDiv.quot * viewPortHeight, viewPortWidth , viewPortHeight );
 	glViewport( viewPortRect.origin.x , viewPortRect.origin.y, viewPortRect.size.width, viewPortRect.size.height );
 }
 
@@ -458,7 +458,8 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			{
 			for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
 				{
-				SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), whichMovie, 3, 3 );
+				SInt32	ROW_COUNT = ( 1.0 + sqrtf( NUM_TEST_MOVIES ) );
+				SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), whichMovie, ROW_COUNT, NUM_TEST_MOVIES / ROW_COUNT  );
 		//		 glViewport(0, 0, 200, 200);
 				glEnable( GL_TEXTURE_RECTANGLE_EXT );
 		//		float	textureWidth = 1;
