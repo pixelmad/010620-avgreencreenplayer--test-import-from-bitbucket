@@ -721,21 +721,21 @@ static void resetKeys()
     ImGuiIO& io = ImGui::GetIO();
     int len = (int)[str length];
     for(int i = 0; i < len; i++)
-    {
+    	{
         int keymap = [str characterAtIndex:i];
         if(mapKeymap(&keymap) && !io.KeyCtrl)
             io.AddInputCharacter(keymap);
         if(keymap < 512)
-        {
+        	{
             if(io.KeyCtrl)
-            {
+            	{
                 // we must reset in case we're pressing a sequence
                 // of special keys while keeping the command pressed
                 resetKeys();
-            }
+            	}
             io.KeysDown[keymap] = true;
-        }
-    }
+        	}
+    	}
 }
 
 - (void)flagsChanged:(NSEvent *)event
@@ -750,11 +750,11 @@ static void resetKeys()
     bool keyShiftReleased = wasKeyShift && !io.KeyShift;
     bool keyCtrlReleased  = wasKeyCtrl  && !io.KeyCtrl;
     if(keyShiftReleased || keyCtrlReleased)
-    {
+    	{
         // we must reset them as we will not receive any
         // keyUp event if they where pressed during shift or command
         resetKeys();
-    }
+    	}
 }
 
 -(void)mouseDown:(NSEvent *)theEvent
@@ -774,8 +774,8 @@ static void resetKeys()
     NSWindow *mainWindow = [self window];
     NSPoint mousePosition = [mainWindow mouseLocationOutsideOfEventStream];
     mousePosition = [self convertPoint:mousePosition fromView:nil];
-    g_mouseCoords[0] = mousePosition.x;
-    g_mouseCoords[1] = mousePosition.y - 1.0f;
+    g_mouseCoords[ 0 ] = mousePosition.x;
+    g_mouseCoords[ 1 ] = mousePosition.y - 1.0f;
 }
 
 -(void)mouseDragged:(NSEvent *)theEvent
