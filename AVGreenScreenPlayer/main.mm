@@ -3,6 +3,7 @@
 #import <OpenGL/glu.h>
 #import <GLUT/glut.h>
 
+#include <stdlib.h>
 
 #include "imgui.h"
 // @RemoteImgui begin
@@ -381,6 +382,15 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 
 }
 
+void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount, UInt32 heightCount )
+{
+	UInt32	totalViewPorts = widthCount * heightCount;
+	div_t	viewDiv = div( viewPortIndex, widthCount );
+	float	viewPortWidth = fullScreen.size.width / widthCount;
+	float	viewPortHeight = fullScreen.size.height / heightCount;
+	CGRect	viewPortRect = CGRectMake( viewDiv.quot * viewPortWidth, viewDiv.rem * viewPortHeight, viewPortWidth , viewPortHeight );
+	glViewport( viewPortRect.origin.x , viewPortRect.origin.y, viewPortRect.size.width, viewPortRect.size.height );
+}
 
 - (void)drawView
 {
@@ -430,6 +440,8 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			}
 		if ( true )
 			{
+			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 0, 3, 3 );
+   	//		 glViewport(0, 0, 200, 200);
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	//		float	textureWidth = 1;
 	//		float	textureHeight = 1;
@@ -465,6 +477,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			}
 		if ( true )
 			{
+   			 glViewport( 200, 200, 200, 200 );
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	//		float	textureWidth = 1;
 	//		float	textureHeight = 1;
@@ -499,6 +512,10 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glPopMatrix();
 			}
 		}
+
+    GLsizei width  = (GLsizei)(g_backingWidth);
+    GLsizei height = (GLsizei)(g_backingHeight);
+    glViewport(0, 0, width, height);
 
 	glDisable( GL_TEXTURE_RECTANGLE_EXT );
 	glMatrixMode( GL_TEXTURE );
