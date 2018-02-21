@@ -178,7 +178,7 @@ void	saveBoolean( const char *path, Boolean	saveValue )
 }
 
 static float		teapotSize = loadFloat( "teapot/size", 0.5 );
-static float		teapotSize2 = loadFloat( "teapot/size2", 0.3 );
+static float		teapotSize2 = loadFloat( "teapot2/size", 0.3 );
 static Boolean		exampleWindowVisible = loadBoolean( "window/example/visible", false );
 
 void IMGUIExample_Draw(double elapsedMilliseconds)
@@ -400,9 +400,9 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
     double milliseconds = ( clock_delay * 1000.0f ) / CLOCKS_PER_SEC;
 
 	[ theAVGLPlayer  renderAVToTexture ];
-	[ theAVGLPlayer  stepPlay:10 ];
+	[ theAVGLPlayer  stepPlay:2 ];
 	[ theAVGLPlayer2  renderAVToTexture ];
-	[ theAVGLPlayer2  stepPlay:3 ];
+	[ theAVGLPlayer2  stepPlay:2 ];
 
     IMGUIExample_Draw(milliseconds);
 
@@ -470,7 +470,7 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
-			glColor4f( 0.0, 0.4, .8, 1.0 );
+		//	glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( teapotSize );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
@@ -507,7 +507,7 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
-			glColor4f( 0.0, 0.4, .8, 1.0 );
+		//	glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( teapotSize2 );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
@@ -937,6 +937,7 @@ static void resetKeys()
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
 	saveFloat( "teapot/size", teapotSize );
+	saveFloat( "teapot2/size", teapotSize2 );
 	saveBoolean( "window/example/visible", exampleWindowVisible );
 
 }
