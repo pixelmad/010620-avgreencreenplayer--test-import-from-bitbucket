@@ -25,7 +25,6 @@
 		A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A65E171915517EEF0058E95B /* InfoPlist.strings */; };
 		A65E171D15517EEF0058E95B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A65E171C15517EEF0058E95B /* main.m */; };
 		A65E172415517EEF0058E95B /* GSDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A65E172315517EEF0058E95B /* GSDocument.m */; };
-		A65E172715517EEF0058E95B /* GSDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65E172515517EEF0058E95B /* GSDocument.xib */; };
 		A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65E172815517EEF0058E95B /* MainMenu.xib */; };
 		A65E173515517FAE0058E95B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E173415517FAE0058E95B /* AVFoundation.framework */; };
 		A65E173715517FB90058E95B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E173615517FB90058E95B /* QuartzCore.framework */; };
@@ -282,7 +281,6 @@
 			files = (
 				7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */,
 				A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */,
-				A65E172715517EEF0058E95B /* GSDocument.xib in Resources */,
 				712B055D20384ED300D71D1B /* README.md in Resources */,
 				712B055F20384ED300D71D1B /* LICENSE.txt in Resources */,
 				712B0566203CE3F600D71D1B /* Karla-Regular.ttf in Resources */,
