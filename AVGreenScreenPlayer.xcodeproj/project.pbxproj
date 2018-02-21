@@ -19,6 +19,7 @@
 		712B056120384ED300D71D1B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055C20384ED300D71D1B /* imgui_draw.cpp */; };
 		712B056320384EF200D71D1B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712B056220384EF200D71D1B /* main.mm */; };
 		712B0566203CE3F600D71D1B /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 712B0565203CE18000D71D1B /* Karla-Regular.ttf */; };
+		712B0569203D9DE700D71D1B /* testEditText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712B0568203D9DE700D71D1B /* testEditText.xib */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
@@ -57,6 +58,7 @@
 		712B056220384EF200D71D1B /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		712B056420384F3800D71D1B /* imgui_remote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgui_remote.h; sourceTree = "<group>"; };
 		712B0565203CE18000D71D1B /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
+		712B0568203D9DE700D71D1B /* testEditText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testEditText.xib; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -204,6 +206,7 @@
 			children = (
 				A65E172815517EEF0058E95B /* MainMenu.xib */,
 				A65E172515517EEF0058E95B /* GSDocument.xib */,
+				712B0568203D9DE700D71D1B /* testEditText.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				712B055D20384ED300D71D1B /* README.md in Resources */,
 				712B055F20384ED300D71D1B /* LICENSE.txt in Resources */,
 				712B0566203CE3F600D71D1B /* Karla-Regular.ttf in Resources */,
+				712B0569203D9DE700D71D1B /* testEditText.xib in Resources */,
 				A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */,
 				7113901F20337A6D002B41CF /* Earth.jpg in Resources */,
 				A65E1741155180270058E95B /* GSChromaKeyFilter.cikernel in Resources */,
