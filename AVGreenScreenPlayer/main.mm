@@ -317,6 +317,34 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 }
 
 //------------------------------------------------------------------
+// my edit text dialog
+//------------------------------------------------------------------
+
+#if 0
+@interface MyEditTextWindowController ()
+@property (weak) IBOutlet NSSecureTextField *passwordField;
+@end
+
+@implementation MyEditTextWindowController
+
+- (IBAction)okCancelAction:(NSButton *)sender
+{
+    [NSApp stopModalWithCode:sender.tag]; // the OK button's tag should be 1
+    [self.window close];
+}
+
++ (NSString*)run
+{
+    MyEditTextWindowController* windowController =
+        [[MyEditTextWindowController alloc] initWithWindowNibName:@"testEditText"];
+    if ([NSApp runModalForWindow:windowController.window])
+        return windowController.passwordField.stringValue;
+    return nil;
+}
+
+@end
+#endif
+//------------------------------------------------------------------
 // IMGUIExampleView
 //------------------------------------------------------------------
 #import "Texture.h"
@@ -798,6 +826,23 @@ static void resetKeys()
 -(void )beep:(id)sender
 {
 	NSLog(@"menu action 2 ");
+	NSWindow	* myCustomDialog;
+    if (!myCustomDialog)
+		{
+        [NSBundle loadNibNamed: @"testEditText" owner: self];
+ 		}
+#if 0
+    [NSApp beginSheet: myCustomDialog
+            modalForWindow: _window
+            modalDelegate: nil
+            didEndSelector: nil
+            contextInfo: nil];
+#endif
+    [NSApp runModalForWindow: myCustomDialog];
+    // Dialog is up here.
+//    [NSApp endSheet: myCustomDialog];
+    [myCustomDialog orderOut: self];
+
 }
 
 -(void )honk:(id)sender
