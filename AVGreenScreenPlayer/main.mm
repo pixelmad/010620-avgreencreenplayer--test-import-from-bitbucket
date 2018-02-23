@@ -449,7 +449,27 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 	for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
 		{
 		[ theAVGLPlayers[ whichMovie ]  renderAVToTexture ];
-		[ theAVGLPlayers[ whichMovie ]  stepPlay:2 ];
+		
+		enum	PLAYMODE
+					{
+					kStepPlay = 0,
+					kUseScroller,
+					};
+		UInt32	playMode = kUseScroller;
+		switch( playMode )
+			{
+			case kStepPlay:
+				{
+				[ theAVGLPlayers[ whichMovie ]  stepPlay:2 ];
+				}
+				break;
+			case kUseScroller:
+				{
+				[ theAVGLPlayers[ whichMovie ]  setCurrentFrameFromFloat:teapotSize2 ];
+				}
+				break;
+			}
+
 		}
 #if 0
 	[ theAVGLPlayer  renderAVToTexture ];
