@@ -1,4 +1,6 @@
-//
+
+
+  //
 //  avplayerload.m
 //  AVGreenScreenPlayer
 //
@@ -44,7 +46,13 @@ const	NSString		*kMyStatusKey = @"hello movies";
 - (id) initWithCGLContextObj:(CGLContextObj)initCGLContext pixelFormat:(CGLPixelFormatObj)initPixelFormat fileurl:(NSString*)path
 {
      // Create a player...
-	
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+
+	Boolean isReadable =  [fileManager isReadableFileAtPath:path];
+	if (!isReadable )
+		{
+		assert( 0 );
+		}
      NSURL* url = [ NSURL fileURLWithPath:path ];
      player = [AVPlayer playerWithURL:url];
      [ player setVolume:0.0 ];
