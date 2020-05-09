@@ -254,15 +254,19 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTime
 			NSString *path2 = [[NSBundle mainBundle] pathForResource:@"Earth" ofType:@"jpg"];
 			texture2 = [ [Texture alloc] initWithPath:path2 ];
 			texture2Name = [texture2 textureName ];
+			//#define		FILENAME	"/Volumes/Macintosh\ HD\ 10_9_5/Users/richardb/Desktop/Turn\ screw\ media/001\ test/ 001\ full\ wall17_1\ AIC-Apple\ ProRes\ 422\ LT.mov" - not this user - not readable!
+			
+			#define		FILENAME	"/Users/richardb/Desktop/001\ full\ wall17_1\ AIC-Apple\ ProRes\ 422\ LT.mov"
 
-			theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+
+			theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@FILENAME ];
 		//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
-			theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+			theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@FILENAME ];
 
 			}
 
 	[ theAVGLPlayer  renderAVToTexture ];
-	[ theAVGLPlayer  stepPlay:10 ];
+	[ theAVGLPlayer  stepPlay:1 ];
 	[ theAVGLPlayer2  renderAVToTexture ];
 	[ theAVGLPlayer2  stepPlay:3 ];
 
