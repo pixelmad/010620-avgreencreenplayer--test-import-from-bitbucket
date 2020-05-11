@@ -21,8 +21,6 @@ const	NSString		*kMyStatusKey = @"hello movies";
 
 -(void) stepPlay:(UInt32 )thisPlaySpeed
 {
-//CMTimeMake
-//	ldiv_t	frame_div = ldiv( frameCount, 2 );
 	Boolean	newFrameNow  = false;
 	currentPlaySpeed = thisPlaySpeed;
 	
@@ -40,6 +38,17 @@ const	NSString		*kMyStatusKey = @"hello movies";
 		thisTime ++;
 		if ( thisTime >= ( frameCount ) )
 			thisTime = 0;
+		}
+}
+
+-(void) setCurrentFrameFromFloat:(float )newFrameFloat
+{
+//	if ( newFrameNow )
+		{
+		long frameCount	 = movieduration * movietimescale;
+		float	newFloatTime = newFrameFloat * frameCount;
+		CMTime newTime = CMTimeMake( ( SInt64 )newFloatTime, 25 );
+		[ player seekToTime:newTime ];
 		}
 }
 

@@ -35,5 +35,6 @@
 - (BOOL) renderAVToTexture;
 - ( CVOpenGLTextureRef )	getTexture;
 -(void) stepPlay:(UInt32 )thisPlaySpeed;
+-(void) setCurrentFrameFromFloat:(float )newFrameFloat;
 
 @end

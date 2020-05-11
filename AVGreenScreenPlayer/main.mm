@@ -3,8 +3,12 @@
 #import <OpenGL/glu.h>
 #import <GLUT/glut.h>
 
+#include <stdlib.h>
 
 #include "imgui.h"
+
+#define NUM_TEST_MOVIES		6
+
 // @RemoteImgui begin
 //#include "imgui_remote.h"
 #define VCANVAS_WIDTH  8192
@@ -98,7 +102,25 @@ void ImImpl_RenderDrawLists(ImDrawData* draw_data)
 void LoadFontsTexture()
 {
     ImGuiIO& io = ImGui::GetIO();
-    unsigned char* pixels;
+// load additional fonts
+    io.Fonts->AddFontDefault();
+
+	NSArray *fontArray = [[NSBundle mainBundle] pathsForResourcesOfType:@"ttf" inDirectory:nil ];
+	for (NSString *path in fontArray)
+		{
+		char path_s[ 512 ];
+		[ path getCString:path_s maxLength:512 encoding:NSASCIIStringEncoding ];
+		io.Fonts->AddFontFromFileTTF( path_s, 16.0 );
+		}
+	
+#if 0
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"Karla-Regular" ofType:@"ttf"];
+	char path_s[ 512 ];
+	[ path getCString:path_s maxLength:512 encoding:NSASCIIStringEncoding ];
+	io.Fonts->AddFontFromFileTTF( path_s, 16.0 );
+ #endif
+	
+	unsigned char* pixels;
     int width, height;
     io.Fonts->GetTexDataAsAlpha8(&pixels, &width, &height);
 
@@ -169,7 +191,7 @@ void	saveBoolean( const char *path, Boolean	saveValue )
 }
 
 static float		teapotSize = loadFloat( "teapot/size", 0.5 );
-static float		teapotSize2 = loadFloat( "teapot/size2", 0.3 );
+static float		teapotSize2 = loadFloat( "teapot2/size", 0.3 );
 static Boolean		exampleWindowVisible = loadBoolean( "window/example/visible", false );
 
 void IMGUIExample_Draw(double elapsedMilliseconds)
@@ -305,6 +327,34 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 }
 
 //------------------------------------------------------------------
+// my edit text dialog
+//------------------------------------------------------------------
+
+#if 0
+@interface MyEditTextWindowController ()
+@property (weak) IBOutlet NSSecureTextField *passwordField;
+@end
+
+@implementation MyEditTextWindowController
+
+- (IBAction)okCancelAction:(NSButton *)sender
+{
+    [NSApp stopModalWithCode:sender.tag]; // the OK button's tag should be 1
+    [self.window close];
+}
+
++ (NSString*)run
+{
+    MyEditTextWindowController* windowController =
+        [[MyEditTextWindowController alloc] initWithWindowNibName:@"testEditText"];
+    if ([NSApp runModalForWindow:windowController.window])
+        return windowController.passwordField.stringValue;
+    return nil;
+}
+
+@end
+#endif
+//------------------------------------------------------------------
 // IMGUIExampleView
 //------------------------------------------------------------------
 #import "Texture.h"
@@ -316,6 +366,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 	GLint 				texture1Name;
 	Texture 			*texture2;
 	GLint 				texture2Name;
+	MyAVplayerload		*theAVGLPlayers[ NUM_TEST_MOVIES ];
 	MyAVplayerload		*theAVGLPlayer;
 	MyAVplayerload		*theAVGLPlayer2;
     NSTimer *animationTimer;
@@ -365,6 +416,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 		texture2 = [ [Texture alloc] initWithPath:path2 ];
 		texture2Name = [texture2 textureName ];
 
+<<<<<<< HEAD
 		#define	TEST_FILE_PATH		"Macintosh HD 10_9_5:Users:richardb:Desktop:Turn screw media:001 test:001 full wall17_1 AIC.mov"
 		#define	TEST_FILE_PATH2		"file:///Volumes/Macintosh%20HD%2010_9_5/Users/richardb/Desktop/Turn%20screw%20media/001%20test/001%20full%20wall17_1%20AIC.mov"
 		#define	TEST_FILE_PATH3		"Macintosh HD 10_9_5:Users:richardb:Desktop:Turn screw media:001 test:001 full wall17_1 AIC.mov"
@@ -376,8 +428,29 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/006 turn screw export cat media/049 mad test 1+blackB-Apple ProRes 422 Proxy.mov" ];
 
+=======
+#if 0
+		theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
+		theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/006 turn screw export cat media/049 mad test 1+blackB-Apple ProRes 422 Proxy.mov" ];
+#endif
+		for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+			{
+			theAVGLPlayers[ whichMovie ] = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
+			}
+>>>>>>> master2
 		}
 
+}
+
+void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount, UInt32 heightCount )
+{
+	UInt32	totalViewPorts = widthCount * heightCount;
+	div_t	viewDiv = div( viewPortIndex, widthCount );
+	float	viewPortWidth = fullScreen.size.width / widthCount;
+	float	viewPortHeight = fullScreen.size.height / heightCount;
+	CGRect	viewPortRect = CGRectMake( viewDiv.rem * viewPortWidth, viewDiv.quot * viewPortHeight, viewPortWidth , viewPortHeight );
+	glViewport( viewPortRect.origin.x , viewPortRect.origin.y, viewPortRect.size.width, viewPortRect.size.height );
 }
 
 - (void)drawView
@@ -387,11 +460,37 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
     g_lastClock = thisclock;
     double milliseconds = ( clock_delay * 1000.0f ) / CLOCKS_PER_SEC;
 
-	[ theAVGLPlayer  renderAVToTexture ];
-	[ theAVGLPlayer  stepPlay:10 ];
-	[ theAVGLPlayer2  renderAVToTexture ];
-	[ theAVGLPlayer2  stepPlay:3 ];
+	for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+		{
+		[ theAVGLPlayers[ whichMovie ]  renderAVToTexture ];
+		
+		enum	PLAYMODE
+					{
+					kStepPlay = 0,
+					kUseScroller,
+					};
+		UInt32	playMode = kUseScroller;
+		switch( playMode )
+			{
+			case kStepPlay:
+				{
+				[ theAVGLPlayers[ whichMovie ]  stepPlay:2 ];
+				}
+				break;
+			case kUseScroller:
+				{
+				[ theAVGLPlayers[ whichMovie ]  setCurrentFrameFromFloat:teapotSize2 ];
+				}
+				break;
+			}
 
+		}
+#if 0
+	[ theAVGLPlayer  renderAVToTexture ];
+	[ theAVGLPlayer  stepPlay:2 ];
+	[ theAVGLPlayer2  renderAVToTexture ];
+	[ theAVGLPlayer2  stepPlay:2 ];
+#endif
     IMGUIExample_Draw(milliseconds);
 
 	if ( true )
@@ -410,24 +509,68 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glMatrixMode( GL_MODELVIEW );
 	
  	//		glRotatef(animationPhase * 1.0, 0.0, 0.0, 1.0);
+			glColor4f( 1.0, 1.0, 1.0, 1.0 );
               	glBegin(GL_QUADS);
                     glTexCoord2f( 0, 0 );
 						glVertex2f(-1, -1);
-						glColor4f( 1.0, 0.0, 0.0, 1.0 );
+			//			glColor4f( 1.0, 0.0, 0.0, 1.0 );
                     glTexCoord2f( 0, 1 );
 						glVertex2f(-1,  1);
-  						glColor4f( 0.0, 1.0, 0.0, 1.0 );
+  			//			glColor4f( 0.0, 1.0, 0.0, 1.0 );
                     glTexCoord2f( 1, 1 );
 						glVertex2f( 1,  1);
-						glColor4f( 0.0, 0.0, 1.0, 1.0 );
+			//			glColor4f( 0.0, 0.0, 1.0, 1.0 );
                     glTexCoord2f( 1, 0 );
 						glVertex2f( 1, -1);
-						glColor4f( 0.0, 1.0, 1.0, 1.0 );
+			//			glColor4f( 0.0, 1.0, 1.0, 1.0 );
                 glEnd();
 		//	glBindTexture(GL_TEXTURE_RECTANGLE_EXT, 0);
 			}
 		if ( true )
 			{
+			for ( UInt32	whichMovie = 0 ; whichMovie <  NUM_TEST_MOVIES ; whichMovie ++ )
+				{
+				SInt32	ROW_COUNT = ( 1.0 + sqrtf( NUM_TEST_MOVIES ) );
+				SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), whichMovie, ROW_COUNT, NUM_TEST_MOVIES / ROW_COUNT  );
+		//		 glViewport(0, 0, 200, 200);
+				glEnable( GL_TEXTURE_RECTANGLE_EXT );
+		//		float	textureWidth = 1;
+		//		float	textureHeight = 1;
+				glPushMatrix();
+				glColor4f( 1.0, 1.0, 1.0, 1.0 );
+	#if 1
+				CVOpenGLTextureRef		thisTexture = [ theAVGLPlayers[ whichMovie ] getTexture ];
+				GLenum	cvTextureTarget = CVOpenGLTextureGetTarget( thisTexture );	// get the texture target (for example, GL_TEXTURE_2D) of the texture
+				GLint	cvTextureName = CVOpenGLTextureGetName( thisTexture );		// get the texture target name of the texture
+				GLfloat	lowerLeft[ 2 ], lowerRight[ 2 ], upperRight[ 2 ], upperLeft[ 2 ];
+				CVOpenGLTextureGetCleanTexCoords( thisTexture,
+							 lowerLeft,
+							 lowerRight,
+							 upperRight,
+							 upperLeft );
+						glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+				
+					float textureWidth = lowerRight[ 0 ];//(int) CVPixelBufferGetWidth( thisTexture );
+					float	textureHeight = lowerRight[ 1 ];//(int) CVPixelBufferGetHeight( thisTexture );
+
+				glBindTexture(GL_TEXTURE_RECTANGLE_EXT, cvTextureName );
+	#endif
+				glMatrixMode( GL_TEXTURE );
+				glLoadIdentity();
+				glScalef( textureWidth, textureHeight, 1.0 );
+				glMatrixMode( GL_MODELVIEW );
+				glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
+			//	glColor4f( 0.0, 0.4, .8, 1.0 );
+				glutSolidTeapot( teapotSize );
+				glColor4f( 0.0, 1.0, .2, .2 );
+			//	glutWireTeapot( 0.5 );
+				glPopMatrix();
+				}
+			}
+		if ( false )
+			{
+			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 0, 3, 3 );
+   	//		 glViewport(0, 0, 200, 200);
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	//		float	textureWidth = 1;
 	//		float	textureHeight = 1;
@@ -455,14 +598,16 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
-			glColor4f( 0.0, 0.4, .8, 1.0 );
+		//	glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( teapotSize );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
 			}
-		if ( true )
+		if ( false )
 			{
+			SetViewPortRect( CGRectMake( 0, 0, g_backingWidth, g_backingHeight ), 1, 3, 3 );
+   		//	 glViewport( 200, 200, 200, 200 );
 			glEnable( GL_TEXTURE_RECTANGLE_EXT );
 	//		float	textureWidth = 1;
 	//		float	textureHeight = 1;
@@ -490,13 +635,17 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			glScalef( textureWidth, textureHeight, 1.0 );
 			glMatrixMode( GL_MODELVIEW );
  			glRotatef(animationPhase * 1.0, 0.2, .3, 1.0);
-			glColor4f( 0.0, 0.4, .8, 1.0 );
+		//	glColor4f( 0.0, 0.4, .8, 1.0 );
 	 		glutSolidTeapot( teapotSize2 );
 			glColor4f( 0.0, 1.0, .2, .2 );
 		//	glutWireTeapot( 0.5 );
 			glPopMatrix();
 			}
 		}
+
+    GLsizei width  = (GLsizei)(g_backingWidth);
+    GLsizei height = (GLsizei)(g_backingHeight);
+    glViewport(0, 0, width, height);
 
 	glDisable( GL_TEXTURE_RECTANGLE_EXT );
 	glMatrixMode( GL_TEXTURE );
@@ -644,21 +793,21 @@ static void resetKeys()
     ImGuiIO& io = ImGui::GetIO();
     int len = (int)[str length];
     for(int i = 0; i < len; i++)
-    {
+    	{
         int keymap = [str characterAtIndex:i];
         if(mapKeymap(&keymap) && !io.KeyCtrl)
             io.AddInputCharacter(keymap);
         if(keymap < 512)
-        {
+        	{
             if(io.KeyCtrl)
-            {
+            	{
                 // we must reset in case we're pressing a sequence
                 // of special keys while keeping the command pressed
                 resetKeys();
-            }
+            	}
             io.KeysDown[keymap] = true;
-        }
-    }
+        	}
+    	}
 }
 
 - (void)flagsChanged:(NSEvent *)event
@@ -673,11 +822,11 @@ static void resetKeys()
     bool keyShiftReleased = wasKeyShift && !io.KeyShift;
     bool keyCtrlReleased  = wasKeyCtrl  && !io.KeyCtrl;
     if(keyShiftReleased || keyCtrlReleased)
-    {
+    	{
         // we must reset them as we will not receive any
         // keyUp event if they where pressed during shift or command
         resetKeys();
-    }
+    	}
 }
 
 -(void)mouseDown:(NSEvent *)theEvent
@@ -697,8 +846,8 @@ static void resetKeys()
     NSWindow *mainWindow = [self window];
     NSPoint mousePosition = [mainWindow mouseLocationOutsideOfEventStream];
     mousePosition = [self convertPoint:mousePosition fromView:nil];
-    g_mouseCoords[0] = mousePosition.x;
-    g_mouseCoords[1] = mousePosition.y - 1.0f;
+    g_mouseCoords[ 0 ] = mousePosition.x;
+    g_mouseCoords[ 1 ] = mousePosition.y - 1.0f;
 }
 
 -(void)mouseDragged:(NSEvent *)theEvent
@@ -721,6 +870,23 @@ static void resetKeys()
 -(void )beep:(id)sender
 {
 	NSLog(@"menu action 2 ");
+	NSWindow	* myCustomDialog;
+    if (!myCustomDialog)
+		{
+        [NSBundle loadNibNamed: @"testEditText" owner: self];
+ 		}
+#if 0
+    [NSApp beginSheet: myCustomDialog
+            modalForWindow: _window
+            modalDelegate: nil
+            didEndSelector: nil
+            contextInfo: nil];
+#endif
+    [NSApp runModalForWindow: myCustomDialog];
+    // Dialog is up here.
+//    [NSApp endSheet: myCustomDialog];
+    [myCustomDialog orderOut: self];
+
 }
 
 -(void )honk:(id)sender
@@ -860,6 +1026,19 @@ static void resetKeys()
  //   [super dealloc];
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification
+{
+// gs doc controller not accessed  but this one is
+    NSArray *docs = [[NSDocumentController sharedDocumentController] documents];
+    if ( [docs count]==0 && [[NSApplication sharedApplication] keyWindow ] == nil)
+    	{
+	//	[ [NSDocumentController sharedDocumentController] newDocument:0 ];
+        // If no docs already open, put up open file dialog at program launch
+ //       [ [NSDocumentController sharedDocumentController] openDocument:self ];
+    	}
+	
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [self setupMenu];
@@ -903,6 +1082,7 @@ static void resetKeys()
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
 	saveFloat( "teapot/size", teapotSize );
+	saveFloat( "teapot2/size", teapotSize2 );
 	saveBoolean( "window/example/visible", exampleWindowVisible );
 
 }

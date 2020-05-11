@@ -18,13 +18,19 @@
 		712B056020384ED300D71D1B /* imgui_demo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055B20384ED300D71D1B /* imgui_demo.cpp */; };
 		712B056120384ED300D71D1B /* imgui_draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B055C20384ED300D71D1B /* imgui_draw.cpp */; };
 		712B056320384EF200D71D1B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 712B056220384EF200D71D1B /* main.mm */; };
+		712B0566203CE3F600D71D1B /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 712B0565203CE18000D71D1B /* Karla-Regular.ttf */; };
+		712B0569203D9DE700D71D1B /* testEditText.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712B0568203D9DE700D71D1B /* testEditText.xib */; };
+		7183588F2040258700F4B44F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7183588A2040253700F4B44F /* Roboto-Medium.ttf */; };
+		718358902040258B00F4B44F /* ProggyTiny.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7183588B2040253700F4B44F /* ProggyTiny.ttf */; };
+		718358912040258E00F4B44F /* ProggyClean.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7183588C2040253700F4B44F /* ProggyClean.ttf */; };
+		718358922040259100F4B44F /* DroidSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7183588D2040253700F4B44F /* DroidSans.ttf */; };
+		718358932040259800F4B44F /* Cousine-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7183588E2040253700F4B44F /* Cousine-Regular.ttf */; };
 		7183593C202F924D009A090B /* MyOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7183593B202F924D009A090B /* MyOpenGLView.m */; };
 		7183593E202F93ED009A090B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7183593D202F93ED009A090B /* OpenGL.framework */; };
 		A65E171115517EEF0058E95B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E171015517EEF0058E95B /* Cocoa.framework */; };
 		A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A65E171915517EEF0058E95B /* InfoPlist.strings */; };
 		A65E171D15517EEF0058E95B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A65E171C15517EEF0058E95B /* main.m */; };
 		A65E172415517EEF0058E95B /* GSDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = A65E172315517EEF0058E95B /* GSDocument.m */; };
-		A65E172715517EEF0058E95B /* GSDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65E172515517EEF0058E95B /* GSDocument.xib */; };
 		A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A65E172815517EEF0058E95B /* MainMenu.xib */; };
 		A65E173515517FAE0058E95B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E173415517FAE0058E95B /* AVFoundation.framework */; };
 		A65E173715517FB90058E95B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65E173615517FB90058E95B /* QuartzCore.framework */; };
@@ -56,6 +62,13 @@
 		712B055C20384ED300D71D1B /* imgui_draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgui_draw.cpp; sourceTree = "<group>"; };
 		712B056220384EF200D71D1B /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		712B056420384F3800D71D1B /* imgui_remote.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgui_remote.h; sourceTree = "<group>"; };
+		712B0565203CE18000D71D1B /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
+		712B0568203D9DE700D71D1B /* testEditText.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = testEditText.xib; sourceTree = "<group>"; };
+		7183588A2040253700F4B44F /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		7183588B2040253700F4B44F /* ProggyTiny.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProggyTiny.ttf; sourceTree = "<group>"; };
+		7183588C2040253700F4B44F /* ProggyClean.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProggyClean.ttf; sourceTree = "<group>"; };
+		7183588D2040253700F4B44F /* DroidSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DroidSans.ttf; sourceTree = "<group>"; };
+		7183588E2040253700F4B44F /* Cousine-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cousine-Regular.ttf"; sourceTree = "<group>"; };
 		7183593A202F924D009A090B /* MyOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenGLView.h; sourceTree = "<group>"; };
 		7183593B202F924D009A090B /* MyOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOpenGLView.m; sourceTree = "<group>"; };
 		7183593D202F93ED009A090B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -185,6 +198,12 @@
 		A65E171715517EEF0058E95B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7183588A2040253700F4B44F /* Roboto-Medium.ttf */,
+				7183588B2040253700F4B44F /* ProggyTiny.ttf */,
+				7183588C2040253700F4B44F /* ProggyClean.ttf */,
+				7183588D2040253700F4B44F /* DroidSans.ttf */,
+				7183588E2040253700F4B44F /* Cousine-Regular.ttf */,
+				712B0565203CE18000D71D1B /* Karla-Regular.ttf */,
 				7113901E20337A6D002B41CF /* Earth.jpg */,
 				7113902020337A75002B41CF /* glgui_texture_packer_070616.png */,
 				A65E171815517EEF0058E95B /* AVGreenScreenPlayer-Info.plist */,
@@ -202,6 +221,7 @@
 			children = (
 				A65E172815517EEF0058E95B /* MainMenu.xib */,
 				A65E172515517EEF0058E95B /* GSDocument.xib */,
+				712B0568203D9DE700D71D1B /* testEditText.xib */,
 			);
 			name = XIBs;
 			sourceTree = "<group>";
@@ -279,12 +299,18 @@
 			files = (
 				7113902120337A75002B41CF /* glgui_texture_packer_070616.png in Resources */,
 				A65E171B15517EEF0058E95B /* InfoPlist.strings in Resources */,
-				A65E172715517EEF0058E95B /* GSDocument.xib in Resources */,
 				712B055D20384ED300D71D1B /* README.md in Resources */,
 				712B055F20384ED300D71D1B /* LICENSE.txt in Resources */,
+				712B0566203CE3F600D71D1B /* Karla-Regular.ttf in Resources */,
+				712B0569203D9DE700D71D1B /* testEditText.xib in Resources */,
 				A65E172A15517EEF0058E95B /* MainMenu.xib in Resources */,
 				7113901F20337A6D002B41CF /* Earth.jpg in Resources */,
 				A65E1741155180270058E95B /* GSChromaKeyFilter.cikernel in Resources */,
+				7183588F2040258700F4B44F /* Roboto-Medium.ttf in Resources */,
+				718358902040258B00F4B44F /* ProggyTiny.ttf in Resources */,
+				718358912040258E00F4B44F /* ProggyClean.ttf in Resources */,
+				718358932040259800F4B44F /* Cousine-Regular.ttf in Resources */,
+				718358922040259100F4B44F /* DroidSans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
