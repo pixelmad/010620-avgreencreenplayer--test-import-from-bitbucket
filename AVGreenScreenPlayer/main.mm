@@ -416,7 +416,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 		texture2 = [ [Texture alloc] initWithPath:path2 ];
 		texture2Name = [texture2 textureName ];
 
-<<<<<<< HEAD
+#if 1
 		#define	TEST_FILE_PATH		"Macintosh HD 10_9_5:Users:richardb:Desktop:Turn screw media:001 test:001 full wall17_1 AIC.mov"
 		#define	TEST_FILE_PATH2		"file:///Volumes/Macintosh%20HD%2010_9_5/Users/richardb/Desktop/Turn%20screw%20media/001%20test/001%20full%20wall17_1%20AIC.mov"
 		#define	TEST_FILE_PATH3		"Macintosh HD 10_9_5:Users:richardb:Desktop:Turn screw media:001 test:001 full wall17_1 AIC.mov"
@@ -427,8 +427,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 		    ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/006 turn screw export cat media/049 mad test 1+blackB-Apple ProRes 422 Proxy.mov" ];
-
-=======
+#else
 #if 0
 		theAVGLPlayer = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
 	//	theAVGLPlayer2 = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/003     005_MainsPianiste.mov" ];
@@ -438,7 +437,7 @@ void IMGUIExample_Draw(double elapsedMilliseconds)
 			{
 			theAVGLPlayers[ whichMovie ] = [ [ MyAVplayerload  alloc] initWithCGLContextObj:[[self openGLContext] CGLContextObj] pixelFormat:[[self pixelFormat] CGLPixelFormatObj] fileurl:@"/Users/richardb/Desktop/Turn screw media/001 test/001 full wall17_1 AIC-Apple ProRes 422 LT.mov" ];
 			}
->>>>>>> master2
+#endif
 		}
 
 }
@@ -469,7 +468,7 @@ void	SetViewPortRect( CGRect fullScreen, UInt32 viewPortIndex, UInt32 widthCount
 					kStepPlay = 0,
 					kUseScroller,
 					};
-		UInt32	playMode = kUseScroller;
+		UInt32	playMode = kStepPlay;
 		switch( playMode )
 			{
 			case kStepPlay:
@@ -1032,9 +1031,9 @@ static void resetKeys()
     NSArray *docs = [[NSDocumentController sharedDocumentController] documents];
     if ( [docs count]==0 && [[NSApplication sharedApplication] keyWindow ] == nil)
     	{
-	//	[ [NSDocumentController sharedDocumentController] newDocument:0 ];
+		[[NSDocumentController sharedDocumentController] newDocument:0 ];
         // If no docs already open, put up open file dialog at program launch
- //       [ [NSDocumentController sharedDocumentController] openDocument:self ];
+        [ [NSDocumentController sharedDocumentController] openDocument:self ];
     	}
 	
 }
