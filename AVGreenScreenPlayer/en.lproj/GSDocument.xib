@@ -62,14 +62,32 @@ IA
                             <binding destination="-2" name="value" keyPath="self.playerView.chromaKeyColor" id="100178"/>
                         </connections>
                     </colorWell>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-nH-6Ka" customClass="MyOpenGLView">
-                        <rect key="frame" x="0.0" y="374" width="624" height="406"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
                     <customView autoresizesSubviews="NO" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="100027" customClass="GSPlayerView">
                         <rect key="frame" x="621" y="307" width="630" height="473"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tLV-nH-6Ka" customClass="MyOpenGLView">
+                        <rect key="frame" x="0.0" y="374" width="624" height="406"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69J-IL-MhP">
+                        <rect key="frame" x="831" y="290" width="261" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GS player view" id="Ooh-sh-dHG">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIZ-qW-Fx8">
+                        <rect key="frame" x="212" y="359" width="255" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="MyOpenGLView" id="Muj-je-xuX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="100029" firstAttribute="leading" secondItem="100028" secondAttribute="trailing" constant="8" symbolic="YES" id="100039"/>
